@@ -12,7 +12,7 @@ export const portfolioData: PortfolioData = {
     headline: "Senior Project Development Engineer",
     domains: ["Solar PV", "BESS", "Renewable Energy"],
     location: "Ho Chi Minh City, Vietnam",
-    linkedinUrl: "TBD",
+    linkedinUrl: "https://www.linkedin.com/in/lenguyenquocviet118/",
     email: "TBD",
     heroStatement: "Developing practical energy solutions for a more sustainable future.",
     about: "TBD — owner-approved biography",
@@ -22,13 +22,12 @@ export const portfolioData: PortfolioData = {
     { label: "Expertise", href: "#expertise" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
   ],
   socialLinks: [
     {
       platform: "LinkedIn",
       label: "LinkedIn",
-      url: "TBD", // To be updated with owner's public LinkedIn profile
+      url: "https://www.linkedin.com/in/lenguyenquocviet118/",
     },
   ],
   expertise: [],
