@@ -4,15 +4,15 @@ import { useEffect } from "react";
 
 export function SectionMotion() {
   useEffect(() => {
-    const targets = document.querySelectorAll<HTMLElement>(".phase2-reveal");
+    const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
     if (!window.IntersectionObserver || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      targets.forEach(element => element.classList.add("phase2-visible"));
+      targets.forEach(element => element.classList.add("is-visible"));
       return;
     }
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("phase2-visible");
+          entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         }
       }
