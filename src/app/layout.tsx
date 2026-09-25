@@ -5,7 +5,7 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#081813",
+  themeColor: "#F7F8F3",
 };
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${sansFont.variable} ${serifFont.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-[#081813] text-[#FBFCFD] antialiased font-sans flex flex-col selection:bg-[#114A1A] selection:text-[#FBFCFD]">
+      <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased font-sans flex flex-col selection:bg-[var(--primary)] selection:text-[var(--surface)]">
         {children}
       </body>
     </html>
