@@ -12,7 +12,7 @@ const features = [
     detail: "Engineering work in the development of solar PV and battery energy storage projects.",
     media: "/images/solar-bess.webp",
     alt: "Solar panels with battery storage equipment in a subtropical landscape",
-    location: "Ho Chi Minh City, Vietnam",
+    mediaLabel: "Solar PV · BESS",
   },
   {
     number: "02",
@@ -22,7 +22,7 @@ const features = [
     detail: "Technical development across solar photovoltaic systems and battery energy storage.",
     media: "/images/about-wind.webp",
     alt: "Wind turbines in a green renewable energy landscape",
-    location: "Renewable Energy",
+    mediaLabel: "Renewable Energy",
   },
   {
     number: "03",
@@ -32,7 +32,7 @@ const features = [
     detail: "Senior Project Development Engineer (PV & BESS) at GreenYellow Asia, based in Ho Chi Minh City.",
     media: "/images/solar-hero.jpg",
     alt: "Renewable energy landscape with wind turbines",
-    location: "Ho Chi Minh City, Vietnam",
+    mediaLabel: "Project Development",
   },
 ];
 
@@ -64,7 +64,7 @@ export function Expertise() {
                   <div className="feature-media">
                     <Image src={feature.media} alt={feature.alt} fill sizes="(max-width: 650px) calc(100vw - 48px), (max-width: 900px) 45vw, 440px" quality={85} className="feature-photo" />
                     <span className="feature-media-number">{feature.number}</span>
-                    <span className="feature-media-place">{feature.location}</span>
+                    <span className="feature-media-place">{feature.mediaLabel}</span>
                   </div>
                   <div className="feature-copy">
                     <div><span className="feature-category">{feature.category}</span><h4>{feature.title}</h4><p className="feature-focus">{feature.focus}</p></div>
