@@ -1,82 +1,61 @@
-# Design System — Clean Energy / Scandinavian
+# Design System — Clean Energy / Scandinavian (Solarize-Inspired)
 
 ## Design intent
-Create a calm, premium interface inspired by Scandinavian editorial design and modern clean-energy brands.
+Create a calm, confident, and premium digital presence inspired by Scandinavian editorial design combined with the contemporary renewable-energy visual language of **Solarize (Framer)**.
+
+The design avoids rigid, boxy wireframe layouts in favor of an image-led, layered visual composition with organic geometry, deep natural greens, and refined typography.
 
 ## Color direction
-Use CSS variables/tokens, not random colors inside components.
+Tokens are defined in `globals.css` and mapped to Tailwind utilities:
 
-Suggested starting palette:
-- `--bg`: #F7F8F3
-- `--surface`: #FFFFFF
-- `--text`: #1D2A24
-- `--muted`: #67746D
-- `--primary`: #173B2B
-- `--accent`: #7FA66A
-- `--accent-soft`: #E8EFE3
-- `--border`: #DDE4DC
+- `--bg`: `#F7F8F3` (warm Scandinavian off-white base)
+- `--surface`: `#FFFFFF` (crisp white content cards)
+- `--text`: `#1D2A24` (deep charcoal-green for primary reading text)
+- `--muted`: `#67746D` (neutral slate-green for secondary metadata)
+- `--primary`: `#173B2B` (deep Scandinavian forest green)
+- `--accent`: `#7FA66A` (refined botanical energy green)
+- `--accent-soft`: `#E8EFE3` (soft tinted green for chips and hover surfaces)
+- `--border`: `#DDE4DC` (restrained structural border tone)
 
-These values are starting points. Adjust slightly if contrast or image harmony requires it.
+### Hero & Layered Overlay Palette
+- Glass Dark: `rgba(13, 40, 24, 0.55)` to `rgba(13, 40, 24, 0.85)` with `backdrop-blur-md`
+- Glass Border: `rgba(255, 255, 255, 0.20)`
+- Glass Highlight / Pill: `rgba(255, 255, 255, 0.12)` with `rgba(255, 255, 255, 0.90)` text
 
 ## Typography
-Aim for a modern editorial feel.
+Maximum two font families:
+- **Display & Headings:** `Manrope` (sans-serif) — bold, modern, confident, engineered feel (`font-semibold` / `font-bold`, tracking `-0.03em` to `-0.05em`).
+- **Editorial Emphasis:** `Newsreader` (serif, `italic`) — restrained, organic accent for key phrases (e.g. *sustainable future*), adding human warmth and international credibility.
+- **Body & Captions:** `Manrope` — highly readable, clean, modern tech feel.
 
-Preferred hierarchy:
-- Display: strong sans or restrained serif/sans pairing
-- Body: highly readable sans
+## Geometry & Radii
+Softer, organic geometry inspired by renewable landscapes:
+- Outer hero framed container: `rounded-[28px]` on mobile, `rounded-[36px]` on desktop.
+- Interactive CTAs: `rounded-full` pills with embedded circular action badges (`rounded-full`).
+- Content cards & floating chips: `rounded-2xl` to `rounded-3xl`.
+- Mobile navigation button: `rounded-full` tactile circular trigger (44x44px minimum).
 
-Examples if available via Google Fonts / next/font:
-- Manrope + Instrument Serif
-- Inter + Newsreader
-- Geist + Libre Baskerville
+## CTA / Button Language
+- **Primary CTA (LinkedIn):**
+  A tactile, rounded-full pill button featuring a dark translucent glass container (`bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/25`), white typography, and an embedded circular white badge with arrow `↗`. On hover, the badge smoothly shifts and scales.
+- **Secondary CTA (Overview Navigation):**
+  Translucent glass pill (`bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md`) with directional arrow `↓`.
+- All interactive targets maintain at least 44px minimum touch height/width.
 
-Do not use more than 2 font families.
+## Image Treatment
+- Image-led hero with real photographic presence.
+- Renewable-energy infrastructure in natural landscape (utility-scale Solar PV integrated into green mountain terrain under soft morning light).
+- Multi-stop gradient overlay ensures high-contrast readability across all viewports.
+- Clearly labeled as illustrative visual in metadata and figcaption to preserve professional credibility.
 
-## Layout
-- Max content width: ~1200–1280px
-- Body text measure: ~60–72ch
-- Large section spacing
-- Grid-based layout
-- Asymmetry is allowed when balanced
-- Cards should not dominate every section
+## Motion & Interactions
+- Pure CSS keyframe animations (`fadeIn`, `fadeSlideUp`, `scale-in`).
+- Micro-interactions on buttons (subtle arrow movement, background transitions).
+- Staggered entrance timing (0.08s–0.15s) for a polished, fluid load.
+- Strictly respects `prefers-reduced-motion: reduce` by setting durations to 0.01ms.
 
-## Hero
-Preferred structure:
-- left: identity, role, concise statement, CTA
-- right: portrait or renewable-energy image
-- minimal stats or expertise labels below
-
-## Components
-Recommended:
-- `SiteHeader`
-- `SectionHeading`
-- `Hero`
-- `ExpertiseCard`
-- `ExperienceTimeline`
-- `ProjectFeature`
-- `Metric`
-- `ActivityCard`
-- `ContactCTA`
-- `SiteFooter`
-
-## Motion
-Use only for:
-- fade/translate entrance
-- image reveal
-- number emphasis
-- nav underline
-- project hover
-
-Avoid continuous movement.
-
-## Images
-Use real images supplied by the owner whenever possible.
-If placeholders are needed, use neutral labeled blocks or royalty-safe temporary images, and mark them as placeholders.
-
-## Responsive behavior
-Mobile should not feel like a compressed desktop layout.
-- Hero stacks vertically.
-- Navigation collapses cleanly.
-- Timeline becomes a simple vertical flow.
-- Project metrics wrap naturally.
-- Minimum tap target ~44px.
+## Responsive Behavior
+- **Desktop (1440px):** Framed immersive hero canvas floating in warm off-white canvas with generous whitespace; floating metadata cards anchored at bottom.
+- **Tablet (768px):** Proportional scaling of hero canvas; balanced central typography with fluid clamps.
+- **Mobile (375px):** Full-bleed or softly rounded hero container; centered bold headline; tactile circular mobile nav button; seamless touch-friendly navigation drawer.
+- Zero horizontal overflow (`scrollWidth === innerWidth`).
