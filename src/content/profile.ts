@@ -31,7 +31,12 @@ export const portfolioData: PortfolioData = {
       url: "https://www.linkedin.com/in/lenguyenquocviet118/",
     },
   ],
-  expertise: [],
+  expertise: [
+    { id: "solar", title: "Solar PV", description: "Focus on practical solar energy solutions within renewable energy development.", verified: true },
+    { id: "bess", title: "Battery Energy Storage (BESS)", description: "Battery energy storage within modern renewable energy development.", verified: true },
+    { id: "renewable", title: "Renewable Energy", description: "Professional focus on renewable energy and a more sustainable future.", verified: true },
+    { id: "development", title: "Project Development", description: "Development-focused engineering across Solar PV and BESS.", verified: true },
+  ],
   experience: [],
   projects: [],
   activities: [],

@@ -5,8 +5,8 @@ import { portfolioData } from "@/content/profile";
 
 const links = [
   { label: "Home", href: "#overview" },
-  { label: "About" },
-  { label: "Expertise" },
+  { label: "About", href: "#about" },
+  { label: "Expertise", href: "#expertise" },
   { label: "Experience" },
 ];
 
