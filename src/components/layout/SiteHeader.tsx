@@ -13,8 +13,20 @@ const links = [
 export function SiteHeader() {
   const { profile } = portfolioData;
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY >= window.innerHeight);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   function close(restore = false) {
     setOpen(false);
@@ -43,7 +55,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="site-header absolute inset-x-0 top-0 z-30 text-white">
+    <header className={`site-header fixed inset-x-0 top-0 z-30 text-white ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="site-header-inner mx-auto flex max-w-[1360px] items-center justify-between">
         <a href="#overview" className="site-wordmark rounded-sm font-bold tracking-[-0.035em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">{profile.name}</a>
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">

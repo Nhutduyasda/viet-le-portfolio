@@ -78,7 +78,7 @@ html { scroll-behavior: smooth; }
 .about-domains { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; max-width: 270px; }
 .about-domains span { border-radius: 999px; background: #eff4eb; color: #365643; padding: 7px 11px; font-size: 13px; }
 .about-intro-row > p { max-width: 375px; font-size: 17px; line-height: 1.5; color: #5d6861; }
-.about-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 48px 20px 0; }
+.about-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 24px 20px 0; }
 .about-card { position: relative; min-width: 0; height: 320px; overflow: hidden; border-radius: 20px; }
 .about-card-dark { display: flex; flex-direction: column; padding: 26px 24px 22px; background: #102d1e; color: #fff; }
 .about-sun-icon { width: 27px; height: 27px; fill: none; stroke: #e7f1e3; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -98,8 +98,7 @@ html { scroll-behavior: smooth; }
 .expertise-pill { color: #253426; }
 .expertise-heading { margin-top: 33px; max-width: 700px; text-align: center; font-size: clamp(34px, 3.25vw, 46px); line-height: 1.16; font-weight: 600; letter-spacing: -.035em; }
 .expertise-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(100%, 790px); gap: 16px; margin-top: 70px; }
-.expertise-card { display: flex; min-height: 188px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #e6e8e5; border-radius: 22px; background: #fff; padding: 22px 28px; text-align: center; color: #22372b; transition: transform .3s cubic-bezier(.16,1,.3,1), background-color .3s ease; }
-.expertise-card:hover { transform: translateY(-3px); background: #f7faf5; }
+.expertise-card { display: flex; min-height: 188px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #e6e8e5; border-radius: 22px; background: #fff; padding: 22px 28px; text-align: center; color: #22372b; }
 .expertise-icon { display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 11px; background: #102d1e; color: #fff; }
 .expertise-icon svg { width: 25px; height: 25px; }
 .expertise-card h3 { margin-top: 18px; font-size: 18px; font-weight: 500; line-height: 1.25; letter-spacing: -.025em; }
@@ -132,3 +131,13 @@ html { scroll-behavior: smooth; }
   html { scroll-behavior: auto; }
   .expertise-card { transition: none; }
 }
+
+/* Solarify's header changes from an image overlay to a white bar on scroll. */
+.site-header { transition: background-color .25s ease, color .25s ease; }
+.site-header-scrolled { background: #fff; color: #182b20; }
+.site-header-scrolled .site-wordmark,
+.site-header-scrolled nav[aria-label="Main navigation"] > a:not(:last-child),
+.site-header-scrolled nav[aria-label="Main navigation"] > span { color: #182b20; }
+.site-header-scrolled nav[aria-label="Main navigation"] > a:last-child { background: #101010; color: #fff; }
+.site-header-scrolled .mobile-trigger { background: #101010; color: #fff; }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
