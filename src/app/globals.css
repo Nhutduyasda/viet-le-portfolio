@@ -24,7 +24,21 @@ body {
 .hero-image { object-position: center center; }
 .hero-overlay { background: linear-gradient(180deg, rgba(8,24,19,.65) 0%, rgba(8,24,19,.62) 45%, rgba(0,8,4,.78) 100%); }
 .hero-content { padding-top: 102px; padding-bottom: 20px; }
-.hero-title { font-size: clamp(36px, 4.45vw, 64px); line-height: 1.08; }
+.hero-title { font-size: clamp(36px, 4.45vw, 64px); line-height: 1.1; letter-spacing: normal; }
+.hero-word { display: inline-block; white-space: nowrap; margin-right: .25em; }
+.hero-word:last-child { margin-right: 0; }
+.hero-link { transition: background-color .35s ease, transform .2s ease; }
+.hero-link:active { transform: scale(.98); }
+.hero-link-label { transition: color .35s ease; }
+.hero-link-circle { transition: transform .7s cubic-bezier(.16, 1, .3, 1); }
+.hero-link-arrow { transform: rotate(-45deg); transition: transform .7s cubic-bezier(.16, 1, .3, 1); }
+.hero-link:hover .hero-link-circle { transform: scale(10); }
+.hero-link:hover .hero-link-label { color: #101014; }
+.hero-link:hover .hero-link-arrow { transform: rotate(0); }
+.menu-strokes { display: flex; width: 18px; height: 14px; flex-direction: column; justify-content: space-between; }
+.menu-strokes span { width: 100%; height: 2px; border-radius: 2px; background: currentColor; transition: transform .25s ease; transform-origin: center; }
+.menu-strokes-open span:first-child { transform: translateY(6px) rotate(45deg); }
+.menu-strokes-open span:last-child { transform: translateY(-6px) rotate(-45deg); }
 .hero-description { font-size: 18px; line-height: 1.5; }
 
 @media (max-width: 767px) {
@@ -32,7 +46,7 @@ body {
   .site-wordmark { font-size: 20px; }
   .hero-image { object-position: 59% center; }
   .hero-content { padding-top: 64px; }
-  .hero-title { font-size: clamp(35px, 9vw, 48px); line-height: 1.12; }
+  .hero-title { font-size: clamp(35px, 9vw, 48px); line-height: 1.1; }
   .hero-description { font-size: 16px; line-height: 1.5; }
   .hero-link { font-size: 15px; }
 }
@@ -41,5 +55,11 @@ body {
   .hero-title { animation-delay: .1s; }
   .hero-description { animation-delay: .2s; }
   .hero-link { animation-delay: .3s; }
+  .hero-letter { display: inline-block; animation: letter-in .65s cubic-bezier(.16,1,.3,1) both; animation-delay: calc(.12s + var(--character-index) * .018s); }
 }
 @keyframes hero-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes letter-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-link, .hero-link-label, .hero-link-circle, .hero-link-arrow, .menu-strokes span { transition: none; }
+}
