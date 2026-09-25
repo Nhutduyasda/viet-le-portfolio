@@ -2,14 +2,15 @@
 
 @layer base {
   :root {
-    --bg: #F7F8F3;
-    --surface: #FFFFFF;
-    --text: #1D2A24;
-    --muted: #67746D;
-    --primary: #173B2B;
-    --accent: #7FA66A;
-    --accent-soft: #E8EFE3;
-    --border: #DDE4DC;
+    --bg: #081813;
+    --surface: #0e241c;
+    --text: #FBFCFD;
+    --text-muted: #B5C2C5;
+    --muted: #788182;
+    --primary: #081813;
+    --accent: #114A1A;
+    --neutral-dark: #373F40;
+    --border: rgba(255, 255, 255, 0.15);
   }
 
   * {
@@ -30,7 +31,6 @@
   --color-muted: var(--muted);
   --color-primary: var(--primary);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
   --color-border: var(--border);
 
   --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -57,42 +57,25 @@
   }
 }
 
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .animate-fade-in {
-    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-slide-up {
-    animation: fadeSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-slide-up-delay-1 {
-    animation: fadeSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
-    animation-fill-mode: both;
-  }
-
-  .animate-slide-up-delay-2 {
-    animation: fadeSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards;
-    animation-fill-mode: both;
-  }
-
-  .animate-visual-reveal {
-    animation: fadeInScale 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+    animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
     animation-fill-mode: both;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

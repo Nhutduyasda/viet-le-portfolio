@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Container } from "@/components/layout/Container";
 import { portfolioData } from "@/content/profile";
 
 export function SiteHeader() {
-  const { profile, navigation } = portfolioData;
+  const { profile } = portfolioData;
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -35,107 +34,91 @@ export function SiteHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // In Phase 1, only expose existing sections to avoid dead links
-  const activeNavItems = navigation.filter(
-    (item) => !item.phase || item.phase === 1
-  );
-
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 border-b border-white/10 bg-[#0d2818]/85 text-white backdrop-blur-md transition-colors duration-200"
+      className="absolute top-0 left-0 right-0 z-40 bg-transparent pt-6 sm:pt-7"
     >
-      <Container className="flex min-h-[72px] items-center justify-between gap-6">
-        {/* Brand Wordmark */}
+      <div className="mx-auto flex max-w-[1360px] items-center justify-between px-6 sm:px-8 lg:px-12">
+        {/* Left: Viet Le Wordmark */}
         <a
-          href="#main-content"
-          className="shrink-0 font-sans text-xl font-bold tracking-tight text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          href="#overview"
+          className="font-sans text-[18px] sm:text-[20px] font-medium tracking-tight text-[#FBFCFD] transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
           {profile.name}
-          <span className="text-[var(--accent)] font-serif italic text-2xl leading-none">.</span>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
-          {activeNavItems.map((item) => (
+        {/* Right Desktop: Overview nav link + White Pill CTA */}
+        <div className="hidden items-center gap-8 lg:flex">
+          <nav aria-label="Main navigation" className="flex items-center gap-7">
             <a
-              key={item.href}
-              href={item.href}
-              className="text-xs font-semibold uppercase tracking-[0.14em] text-white/75 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              href="#overview"
+              className="text-[14px] font-medium text-[#FBFCFD]/85 transition-colors hover:text-[#FBFCFD] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              {item.label}
+              Overview
             </a>
-          ))}
+          </nav>
 
           <a
             href={profile.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex min-h-11 items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm transition-all duration-200 hover:border-white/40 hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            className="inline-flex h-[42px] items-center justify-center rounded-full bg-[#FBFCFD] px-6 text-[14px] font-medium text-[#081813] transition-all hover:bg-white hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <span>LinkedIn</span>
-            <span
-              aria-hidden="true"
-              className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            >
-              ↗
-            </span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-        </nav>
+        </div>
 
-        {/* Mobile Menu Trigger — Solarize organic circular button */}
+        {/* Mobile: Compact circular menu button matching reference */}
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
+          className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#FBFCFD] text-[#081813] transition-transform active:scale-95 lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           aria-expanded={isOpen}
           aria-controls="mobile-nav-panel"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         >
-          <span className="relative flex h-3.5 w-4 flex-col justify-between" aria-hidden="true">
+          <span className="relative flex h-3 w-3.5 flex-col justify-between" aria-hidden="true">
             <span
-              className={`block h-[1.5px] w-full bg-current transition-transform duration-200 ease-out ${
-                isOpen ? "translate-y-[5.5px] rotate-45" : ""
+              className={`block h-[1.5px] w-full bg-[#081813] transition-transform duration-200 ease-out ${
+                isOpen ? "translate-y-[5px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-[1.5px] w-full bg-current transition-transform duration-200 ease-out ${
+              className={`block h-[1.5px] w-full bg-[#081813] transition-transform duration-200 ease-out ${
                 isOpen ? "-translate-y-[5.5px] -rotate-45" : ""
               }`}
             />
           </span>
         </button>
-      </Container>
+      </div>
 
-      {/* Mobile Drawer Backdrop */}
+      {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-[72px] z-30 bg-black/40 backdrop-blur-[3px] lg:hidden"
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
       )}
 
-      {/* Mobile Navigation Panel */}
+      {/* Mobile Drawer Panel */}
       {isOpen && (
         <nav
           id="mobile-nav-panel"
           aria-label="Mobile navigation"
-          className="absolute left-0 right-0 top-full z-40 border-b border-white/10 bg-[#0d2818]/95 p-5 text-white shadow-2xl backdrop-blur-xl lg:hidden animate-fade-in"
+          className="absolute left-4 right-4 top-20 z-40 rounded-2xl border border-white/15 bg-[#081813]/95 p-5 text-white shadow-2xl backdrop-blur-md lg:hidden animate-fade-in"
         >
-          <Container className="space-y-4">
-            <div className="flex flex-col space-y-1">
-              {activeNavItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="flex min-h-11 items-center rounded-xl px-3 text-sm font-semibold tracking-wide text-white/90 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
-                >
-                  {item.label}
-                </a>
-              ))}
+          <div className="space-y-4">
+            <div className="flex flex-col space-y-2">
+              <a
+                href="#overview"
+                onClick={() => setIsOpen(false)}
+                className="flex min-h-10 items-center px-2 text-[15px] font-medium text-[#FBFCFD] hover:text-[#FBFCFD]/80"
+              >
+                Overview
+              </a>
             </div>
 
             <div className="border-t border-white/10 pt-3">
@@ -144,19 +127,12 @@ export function SiteHeader() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="flex min-h-12 items-center justify-between rounded-full bg-white px-5 py-3 text-sm font-semibold text-[var(--primary)] transition-transform duration-200 hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-white"
+                className="flex h-11 items-center justify-center rounded-full bg-[#FBFCFD] px-5 text-sm font-medium text-[#081813] transition-opacity hover:opacity-95"
               >
-                <span>Connect on LinkedIn</span>
-                <span aria-hidden="true" className="font-bold">↗</span>
-                <span className="sr-only"> (opens in a new tab)</span>
+                Connect on LinkedIn
               </a>
             </div>
-
-            <div className="px-3 pt-1 text-[11px] text-white/60">
-              <p className="font-medium text-white/80">{profile.headline}</p>
-              <p className="mt-0.5">{profile.location}</p>
-            </div>
-          </Container>
+          </div>
         </nav>
       )}
     </header>
