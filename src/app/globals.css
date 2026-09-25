@@ -1,138 +1,45 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    /* Scandinavian Clean-Energy Light Base Foundation */
-    --bg: #F7F8F3;
-    --surface: #FFFFFF;
-    --text: #1D2A24;
-    --muted: #67746D;
-    --primary: #173B2B;
-    --accent: #7FA66A;
-    --accent-soft: #E8EFE3;
-    --border: #DDE4DC;
+:root {
+  --bg: #081813;
+  --surface: #FBFCFD;
+  --text: #FBFCFD;
+  --muted: #B5C2C5;
+  --accent: #114A1A;
+}
 
-    /* Scoped Dark Immersive Tokens for Hero & SiteHeader */
-    --hero-bg: #081813;
-    --hero-surface: #0e241c;
-    --hero-text: #FBFCFD;
-    --hero-text-muted: #B5C2C5;
-    --hero-muted: #788182;
-    --hero-accent: #114A1A;
-    --hero-border: rgba(255, 255, 255, 0.15);
-  }
-
-  * {
-    border-color: var(--border);
-  }
-
-  body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-manrope), Arial, sans-serif;
 }
 
 @theme {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-text: var(--text);
-  --color-muted: var(--muted);
-  --color-primary: var(--primary);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-border: var(--border);
-
-  --color-hero-bg: var(--hero-bg);
-  --color-hero-surface: var(--hero-surface);
-  --color-hero-text: var(--hero-text);
-  --color-hero-text-muted: var(--hero-text-muted);
-  --color-hero-muted: var(--hero-muted);
-  --color-hero-accent: var(--hero-accent);
-  --color-hero-border: var(--hero-border);
-
-  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-newsreader), Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-manrope), Arial, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+.site-header-inner { height: 76px; padding: 0 5.6%; }
+.site-wordmark { font-size: 23px; line-height: 1; }
+.hero-image { object-position: center center; }
+.hero-overlay { background: linear-gradient(180deg, rgba(8,24,19,.52) 0%, rgba(8,24,19,.48) 45%, rgba(0,8,4,.72) 100%); }
+.hero-content { padding-top: 78px; padding-bottom: 20px; }
+.hero-title { font-size: clamp(36px, 4.45vw, 64px); line-height: 1.08; }
+.hero-description { font-size: 18px; line-height: 1.5; }
 
-/* Distinct Choreographed Hero Entrance Keyframes */
-@keyframes heroEyebrowEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@media (max-width: 767px) {
+  .site-header-inner { height: 76px; padding: 0 20px; }
+  .site-wordmark { font-size: 20px; }
+  .hero-image { object-position: 59% center; }
+  .hero-content { padding-top: 64px; }
+  .hero-title { font-size: clamp(35px, 9vw, 48px); line-height: 1.12; }
+  .hero-description { font-size: 16px; line-height: 1.5; }
+  .hero-link { font-size: 15px; }
 }
-
-@keyframes heroHeadlineEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroCtaEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Choreographed Hero Entrance Sequence */
 @media (prefers-reduced-motion: no-preference) {
-  .animate-hero-eyebrow {
-    animation: heroEyebrowEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
-    opacity: 0;
-  }
-
-  .animate-hero-headline {
-    animation: heroHeadlineEntrance 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
-    opacity: 0;
-  }
-
-  .animate-hero-cta {
-    animation: heroCtaEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
-    opacity: 0;
-  }
-
-  .animate-menu-enter {
-    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+  .hero-enter { animation: hero-in .7s cubic-bezier(.16,1,.3,1) both; }
+  .hero-title { animation-delay: .1s; }
+  .hero-description { animation-delay: .2s; }
+  .hero-link { animation-delay: .3s; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-hero-eyebrow,
-  .animate-hero-headline,
-  .animate-hero-cta,
-  .animate-menu-enter {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
-
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
+@keyframes hero-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }

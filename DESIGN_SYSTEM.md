@@ -1,116 +1,26 @@
-# Design System — Clean Energy / Scandinavian
+# Design System — Viet Le Portfolio
 
-## Design Intent
-Create a calm, premium interface inspired by Scandinavian editorial design and modern clean-energy brands. The overarching site foundation is light, airy, and warm, establishing credibility and clarity for senior renewable energy engineering and project development.
+## Visual contract
 
----
+The live [Solarify reference](https://solarsolarify.framer.website/) is the visual reference for the **entire** portfolio. Subsequent sections may alternate light and dark surfaces where Solarify does, while preserving its shared typography, spacing, photography, navigation, buttons and motion language. Recheck the live page at each phase; measured live behavior overrides this document.
 
-## Global Color Palette (Base Foundation)
-The global tokens establish the warm Scandinavian off-white foundation used across the site body, content sections, cards, and typography. CSS variables must be used rather than ad-hoc inline hex colors.
+## Phase 1: Header and Hero
 
-- `--bg`: `#F7F8F3` (warm Scandinavian off-white canvas)
-- `--surface`: `#FFFFFF` (clean card and surface background)
-- `--text`: `#1D2A24` (deep forest neutral for primary typography, ensuring high contrast)
-- `--muted`: `#67746D` (neutral green-gray for secondary metadata)
-- `--primary`: `#173B2B` (deep botanical forest green)
-- `--accent`: `#7FA66A` (refined energy green accent)
-- `--accent-soft`: `#E8EFE3` (soft botanical tint for subtle badges or hover states)
-- `--border`: `#DDE4DC` (subtle organic boundary line)
+- Full-viewport wind-turbine landscape from `/images/solar-hero.png` with a restrained dark overlay.
+- Header floats over the image: left wordmark, four central/right navigation labels, white pill CTA. At narrow widths, use a compact menu with accessible focus handling.
+- Centered eyebrow, two-phrase headline, supporting copy and pill CTA with a white arrow circle.
+- Manrope is the primary sans font; near-white `#FBFCFD`, dark green `#081813`, green `#114A1A`, secondary `#B5C2C5` and `#788182` provide the core palette.
+- Motion is subtle and disabled for reduced-motion users. Interactive controls retain visible focus and 44px touch targets.
 
----
+## Later phases (design direction only)
 
-## Typography
-Modern editorial pairing combining architectural clarity with human warmth:
-- **Primary / Sans:** `Manrope` via `next/font/google` (`--font-sans`). Geometric, humanist, highly legible across data points, headlines, and interface controls.
-- **Secondary / Serif:** `Newsreader` via `next/font/google` (`--font-serif`). Restrained editorial accent font for quotes or long-form thought leadership where appropriate.
+| Solarify pattern | Viet Le portfolio equivalent |
+| --- | --- |
+| About Story | About |
+| Services | Expertise |
+| Process | Experience or professional development process, if facts support it |
+| Projects | Selected Projects |
+| Credibility and statistics | Verified professional facts only |
+| Contact | LinkedIn or verified contact CTA |
 
-Rules:
-- Strict limit of 2 font families across the entire portfolio.
-- No artificial letter-spacing expansion on lowercase body text.
-
----
-
-## Scoped Visual Contract: Phase 1 Hero & SiteHeader (Solarify Reference)
-
-> **Important Scoping Boundary:**
-> In accordance with the owner's visual reference (`https://solarsolarify.framer.website/`), the Phase 1 Hero section and overlaid SiteHeader employ an **isolated dark, cinematic full-viewport canvas**.
-> This dark theme is **strictly scoped** to the Hero and SiteHeader components (`[data-theme="hero-dark"]` / `.hero-dark-scope`). The global document body and all subsequent phases (About, Expertise, Experience, Projects, Footer) remain grounded in the warm Scandinavian light system (`--bg: #F7F8F3`, `--text: #1D2A24`).
-
-### Scoped Hero Tokens
-- `--hero-bg`: `#081813` (deep botanical obsidian dark)
-- `--hero-text`: `#FBFCFD` (crisp near-white for high contrast on dark surfaces)
-- `--hero-text-muted`: `#B5C2C5` (soft silver-sage for secondary labels)
-- `--hero-muted`: `#788182` (quiet dark-mode metadata)
-- `--hero-accent`: `#114A1A` (deep botanical accent)
-- `--hero-border`: `rgba(255, 255, 255, 0.15)` (refined glass border)
-
-### Inspected Solarify Reference Typography
-Direct inspection of `https://solarsolarify.framer.website/` establishes the verified metrics:
-- **Font Family:** `Manrope` (weight 500 / medium)
-- **Line Height Ratio:** `1.1` (measured 66px line-height at 60px desktop font size; 39.6px at 36px tablet/mobile)
-- **Letter Spacing:** `normal` (0px; eliminates artificial negative tracking)
-- **Headline Sizing:** Fluid clamp `clamp(2.125rem, 4.2vw, 3.75rem)` (~34px on 375px mobile, ~44px on 768px tablet, 60px on 1440px desktop)
-- **Natural Composition:** Two balanced optical lines on desktop and tablet via `max-w` containment without rigid `<br>` or artificial `whitespace-nowrap` locks.
-
-### Hero Photography & Overlay
-- Background: Full-viewport, edge-to-edge cinematic landscape photography (`/images/solar-hero.png`) featuring modern wind turbines across rolling green terrain.
-- Overlay: Calibrated vertical linear gradient preserving the radiant warmth and detail of the landscape while meeting WCAG AAA legibility for overlaid white typography:
-  ```css
-  background: linear-gradient(
-    to bottom,
-    rgba(8, 24, 19, 0.30),
-    rgba(8, 24, 19, 0.36) 52%,
-    rgba(8, 24, 19, 0.52)
-  );
-  ```
-
-### Hero Center Composition
-Zero visual clutter. Strictly contains:
-1. **Eyebrow Capsule:** Dark translucent pill (`h-[28px]`, `px-4`, `rounded-full`, `border border-white/20`, `bg-black/25`, text 12–13px `#FBFCFD`/90). Content: `Renewable Energy · Vietnam`.
-2. **Main Headline:** Architectural sans (`Manrope`, weight 500, `clamp(2.125rem, 4.2vw, 3.75rem)`, `leading-[1.1]`, `tracking-normal`, `#FBFCFD`), breaking naturally into two balanced lines on desktop.
-3. **CTA Support Element:** Translucent dark pill button (`h-[48px]`, `rounded-full`, `border border-white/20`, `bg-black/35`) with an embedded circular near-white badge housing diagonal arrow `↗`.
-
-### Custom Button Micro-Interactions
-- **Hero CTA:** Coordinated multi-layer motion language:
-  - Relative container with `overflow-hidden`.
-  - Animated surface fill layer sweeping across under the label (`origin-left scale-x-0 group-hover:scale-x-100`, duration 400ms, `cubic-bezier(0.16, 1, 0.3, 1)`).
-  - Translating circular arrow container (`group-hover:translate-x-1 group-hover:-translate-y-0.5`).
-  - Internal arrow glyph rotation (`group-hover:rotate-12`).
-  - Tactile press state (`active:scale-[0.98]`).
-  - Accessible focus ring (`focus-visible:ring-2 focus-visible:ring-white`).
-- **Header Desktop CTA:** Simpler matching version:
-  - Clean white pill button (`#FBFCFD` background, `#081813` text).
-  - Subtle dark fill layer sweeping across (`origin-left scale-x-0 group-hover:scale-x-100`, opacity 0.06).
-  - Gentle label shift (`group-hover:translate-x-0.5`).
-  - Tactile active press state (`active:scale-[0.98]`).
-  - Accessible focus ring.
-- **Mobile Menu Trigger:** Minimum 44x44px circular white button (`bg-[#FBFCFD]`) meeting WCAG touch target standards, with two dark horizontal bars animating into an 'X' on toggle.
-
-### Header Geometry & Accessibility Lifecycle
-- Positioned absolutely over the hero canvas (`top: 0; left: 0; right: 0; z-40; pt-6 sm:pt-7`).
-- Transparent background without solid bars or distracting blur slabs.
-- Internal max-width: ~1360px centered with responsive gutter padding.
-- Wordmark: `Viet Le` in `Manrope` medium, `#FBFCFD`.
-- Mobile Menu Lifecycle & Accessibility:
-  - When closed: Drawer element is strictly marked with `inert` and child links have `tabIndex={-1}`, completely excluding it from the keyboard Tab order and screen reader accessibility tree.
-  - When open: First focusable link receives focus, keyboard Tab is trapped within the drawer panel, Shift+Tab cycles backward properly.
-  - Dismissal: Pressing `Escape` or clicking the backdrop dismisses the menu and restores focus directly to the toggle button (`triggerRef.current?.focus()`).
-  - Touch targets: All mobile navigation links meet or exceed the 44px minimum height standard (`min-h-[44px]`).
-
----
-
-## Motion & Accessibility Standards
-- **Choreographed Hero Entrance:** Distinct keyframe identities:
-  - Eyebrow: `heroEyebrowEntrance` (0.45s, 6px translateY).
-  - Headline: `heroHeadlineEntrance` (0.65s, 16px translateY).
-  - CTA: `heroCtaEntrance` (0.55s, 8px translateY + 0.97 scale).
-- **Reduced Motion:** All transitions and keyframe animations must strictly respect `@media (prefers-reduced-motion: reduce)` by immediately displaying content without translation, scaling, or delays (`opacity: 1 !important; transform: none !important; animation: none !important;`).
-- **Factual Integrity:** Hero image alt text strictly describes observable visual elements without unsubstantiated geographic or biographical assumptions.
-
----
-
-## Global Layout Rules (Phase 2+ Continuity)
-- Max content width: ~1200–1280px (`Container`).
-- Body text measure: ~60–72ch for optimal readability.
-- Generous whitespace between sections (py-16 to py-28).
-- Minimum touch target: 44x44px.
+No employers, projects, dates, education, statistics, testimonials or certifications may be invented. Phase 2 content is not implemented in Phase 1.
