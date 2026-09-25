@@ -42,32 +42,43 @@ export function Hero() {
           </div>
         </div>
 
-        {/* 2. Choreographed Main Headline — Exactly two architectural lines on desktop */}
-        <div className="mx-auto max-w-[1100px]">
+        {/* 2. Headline: Fluid typography naturally composed into two balanced optical lines */}
+        <div className="mx-auto max-w-[680px] sm:max-w-[780px] md:max-w-[860px] lg:max-w-[940px] xl:max-w-[1040px]">
           <h1
             id="hero-title"
-            className="animate-hero-headline font-sans text-[34px] sm:text-[44px] md:text-[50px] lg:text-[56px] xl:text-[60px] font-medium leading-[1.04] tracking-[-0.035em] text-[#FBFCFD]"
+            className="animate-hero-headline font-sans text-[clamp(2.125rem,4.2vw,3.75rem)] font-medium leading-[1.1] tracking-normal text-[#FBFCFD]"
           >
-            <span className="lg:whitespace-nowrap">Developing practical energy solutions</span>
-            <br className="hidden lg:inline" />{" "}
-            <span className="lg:whitespace-nowrap">for a sustainable future</span>
+            Developing practical energy solutions for a sustainable future
           </h1>
         </div>
 
-        {/* 3. Choreographed CTA Support Element with coordinated micro-interactions */}
+        {/* 3. Hero CTA: Coordinated custom motion with animated surface fill layer and translating arrow */}
         <div className="animate-hero-cta mt-7 sm:mt-9">
           <a
             href={profile.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex h-[48px] items-center gap-3.5 rounded-full border border-white/20 bg-black/30 py-1.5 pl-6 pr-2 text-[14px] sm:text-[15px] font-medium text-[#FBFCFD] backdrop-blur-xs transition-all duration-200 hover:border-white/40 hover:bg-black/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813]"
+            className="group relative inline-flex h-[48px] items-center gap-3.5 overflow-hidden rounded-full border border-white/20 bg-black/35 py-1.5 pl-6 pr-2 text-[14px] sm:text-[15px] font-medium text-[#FBFCFD] backdrop-blur-xs transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/40 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813]"
           >
-            <span>Connect on LinkedIn</span>
+            {/* Animated internal fill layer sweeping across on hover */}
+            <span
+              className="absolute inset-0 origin-left scale-x-0 bg-white/[0.09] transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 pointer-events-none"
+              aria-hidden="true"
+            />
+
+            {/* Stable text label */}
+            <span className="relative z-10 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              Connect on LinkedIn
+            </span>
+
+            {/* Controlled circular arrow container with subtle diagonal glide and rotation */}
             <span
               aria-hidden="true"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FBFCFD] text-[#081813] text-xs font-bold transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-white"
+              className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#FBFCFD] text-[#081813] text-xs font-bold transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:bg-white group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
             >
-              ↗
+              <span className="inline-block transition-transform duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-12">
+                ↗
+              </span>
             </span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>

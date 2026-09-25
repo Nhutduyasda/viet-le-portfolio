@@ -64,10 +64,11 @@
   }
 }
 
-@keyframes fadeSlideUp {
+/* Distinct Choreographed Hero Entrance Keyframes */
+@keyframes heroEyebrowEntrance {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -75,20 +76,42 @@
   }
 }
 
-/* Hero entrance choreography */
+@keyframes heroHeadlineEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroCtaEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Choreographed Hero Entrance Sequence */
 @media (prefers-reduced-motion: no-preference) {
   .animate-hero-eyebrow {
-    animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
+    animation: heroEyebrowEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
     opacity: 0;
   }
 
   .animate-hero-headline {
-    animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+    animation: heroHeadlineEntrance 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
     opacity: 0;
   }
 
   .animate-hero-cta {
-    animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
+    animation: heroCtaEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
     opacity: 0;
   }
 

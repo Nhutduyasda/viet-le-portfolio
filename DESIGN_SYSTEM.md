@@ -27,7 +27,6 @@ Modern editorial pairing combining architectural clarity with human warmth:
 Rules:
 - Strict limit of 2 font families across the entire portfolio.
 - No artificial letter-spacing expansion on lowercase body text.
-- Hero headline uses tight architectural tracking (`-0.035em`) with balanced line wrapping.
 
 ---
 
@@ -45,6 +44,14 @@ Rules:
 - `--hero-accent`: `#114A1A` (deep botanical accent)
 - `--hero-border`: `rgba(255, 255, 255, 0.15)` (refined glass border)
 
+### Inspected Solarify Reference Typography
+Direct inspection of `https://solarsolarify.framer.website/` establishes the verified metrics:
+- **Font Family:** `Manrope` (weight 500 / medium)
+- **Line Height Ratio:** `1.1` (measured 66px line-height at 60px desktop font size; 39.6px at 36px tablet/mobile)
+- **Letter Spacing:** `normal` (0px; eliminates artificial negative tracking)
+- **Headline Sizing:** Fluid clamp `clamp(2.125rem, 4.2vw, 3.75rem)` (~34px on 375px mobile, ~44px on 768px tablet, 60px on 1440px desktop)
+- **Natural Composition:** Two balanced optical lines on desktop and tablet via `max-w` containment without rigid `<br>` or artificial `whitespace-nowrap` locks.
+
 ### Hero Photography & Overlay
 - Background: Full-viewport, edge-to-edge cinematic landscape photography (`/images/solar-hero.png`) featuring modern wind turbines across rolling green terrain.
 - Overlay: Calibrated vertical linear gradient preserving the radiant warmth and detail of the landscape while meeting WCAG AAA legibility for overlaid white typography:
@@ -60,30 +67,44 @@ Rules:
 ### Hero Center Composition
 Zero visual clutter. Strictly contains:
 1. **Eyebrow Capsule:** Dark translucent pill (`h-[28px]`, `px-4`, `rounded-full`, `border border-white/20`, `bg-black/25`, text 12–13px `#FBFCFD`/90). Content: `Renewable Energy · Vietnam`.
-2. **Main Headline:** Architectural sans (`Manrope`, weight 500, `clamp(2.25rem, 5vw, 3.75rem)`, `leading-[1.04]`, `tracking-[-0.035em]`, `#FBFCFD`), breaking naturally into two balanced lines on desktop.
-3. **CTA Support Element:** Translucent dark pill button (`h-[48px]`, `rounded-full`, `border border-white/20`, `bg-black/30`) with an embedded circular near-white badge (`h-8 w-8 rounded-full bg-[#FBFCFD] text-[#081813]`) housing a diagonal arrow `↗`.
+2. **Main Headline:** Architectural sans (`Manrope`, weight 500, `clamp(2.125rem, 4.2vw, 3.75rem)`, `leading-[1.1]`, `tracking-normal`, `#FBFCFD`), breaking naturally into two balanced lines on desktop.
+3. **CTA Support Element:** Translucent dark pill button (`h-[48px]`, `rounded-full`, `border border-white/20`, `bg-black/35`) with an embedded circular near-white badge housing diagonal arrow `↗`.
 
-### Button Micro-Interactions
-- **Hero CTA:** Coordinated surface brightening (`hover:bg-black/50 hover:border-white/40`), subtle diagonal translation of the embedded arrow (`group-hover:translate-x-0.5 group-hover:-translate-y-0.5`), tactile press feedback (`active:scale-[0.98]`), and high-visibility focus ring (`focus-visible:outline-2 focus-visible:outline-white`).
-- **Header Desktop CTA:** Clean white pill button (`#FBFCFD` background, `#081813` text) with subtle hover opacity/lightness, tactile active press state (`active:scale-[0.98]`), and accessible focus ring.
-- **Mobile Menu Trigger:** 40x40px circular white button (`bg-[#FBFCFD]`) with two dark horizontal bars that animate into an 'X' on toggle.
+### Custom Button Micro-Interactions
+- **Hero CTA:** Coordinated multi-layer motion language:
+  - Relative container with `overflow-hidden`.
+  - Animated surface fill layer sweeping across under the label (`origin-left scale-x-0 group-hover:scale-x-100`, duration 400ms, `cubic-bezier(0.16, 1, 0.3, 1)`).
+  - Translating circular arrow container (`group-hover:translate-x-1 group-hover:-translate-y-0.5`).
+  - Internal arrow glyph rotation (`group-hover:rotate-12`).
+  - Tactile press state (`active:scale-[0.98]`).
+  - Accessible focus ring (`focus-visible:ring-2 focus-visible:ring-white`).
+- **Header Desktop CTA:** Simpler matching version:
+  - Clean white pill button (`#FBFCFD` background, `#081813` text).
+  - Subtle dark fill layer sweeping across (`origin-left scale-x-0 group-hover:scale-x-100`, opacity 0.06).
+  - Gentle label shift (`group-hover:translate-x-0.5`).
+  - Tactile active press state (`active:scale-[0.98]`).
+  - Accessible focus ring.
+- **Mobile Menu Trigger:** Minimum 44x44px circular white button (`bg-[#FBFCFD]`) meeting WCAG touch target standards, with two dark horizontal bars animating into an 'X' on toggle.
 
-### Header Geometry & Behavior
+### Header Geometry & Accessibility Lifecycle
 - Positioned absolutely over the hero canvas (`top: 0; left: 0; right: 0; z-40; pt-6 sm:pt-7`).
 - Transparent background without solid bars or distracting blur slabs.
 - Internal max-width: ~1360px centered with responsive gutter padding.
 - Wordmark: `Viet Le` in `Manrope` medium, `#FBFCFD`.
-- Mobile Menu Lifecycle:
-  - Accessible dialog semantics (`aria-expanded`, `aria-controls`, `aria-label`).
-  - Animated backdrop and dropdown drawer enter/exit transitions.
-  - Keyboard navigation: Closes on `Escape` key and returns focus to the menu toggle button.
-  - Focus trap / boundary containment within the open mobile drawer.
+- Mobile Menu Lifecycle & Accessibility:
+  - When closed: Drawer element is strictly marked with `inert` and child links have `tabIndex={-1}`, completely excluding it from the keyboard Tab order and screen reader accessibility tree.
+  - When open: First focusable link receives focus, keyboard Tab is trapped within the drawer panel, Shift+Tab cycles backward properly.
+  - Dismissal: Pressing `Escape` or clicking the backdrop dismisses the menu and restores focus directly to the toggle button (`triggerRef.current?.focus()`).
+  - Touch targets: All mobile navigation links meet or exceed the 44px minimum height standard (`min-h-[44px]`).
 
 ---
 
 ## Motion & Accessibility Standards
-- **Choreographed Hero Entrance:** Staggered sequence for eyebrow (0.5s ease-out, 0s delay), headline (0.6s ease-out, 0.12s delay), and CTA (0.6s ease-out, 0.24s delay).
-- **Reduced Motion:** All transitions and keyframe animations must strictly respect `@media (prefers-reduced-motion: reduce)` by immediately displaying content without translation or delays.
+- **Choreographed Hero Entrance:** Distinct keyframe identities:
+  - Eyebrow: `heroEyebrowEntrance` (0.45s, 6px translateY).
+  - Headline: `heroHeadlineEntrance` (0.65s, 16px translateY).
+  - CTA: `heroCtaEntrance` (0.55s, 8px translateY + 0.97 scale).
+- **Reduced Motion:** All transitions and keyframe animations must strictly respect `@media (prefers-reduced-motion: reduce)` by immediately displaying content without translation, scaling, or delays (`opacity: 1 !important; transform: none !important; animation: none !important;`).
 - **Factual Integrity:** Hero image alt text strictly describes observable visual elements without unsubstantiated geographic or biographical assumptions.
 
 ---

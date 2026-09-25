@@ -31,7 +31,7 @@ export function SiteHeader() {
 
       if (event.key === "Tab" && drawerRef.current) {
         const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          'a[href], button:not([disabled]), [tabindex="0"]'
         );
         if (focusableElements.length === 0) return;
 
@@ -97,17 +97,17 @@ export function SiteHeader() {
         {/* Left: Viet Le Wordmark */}
         <a
           href="#overview"
-          className="font-sans text-[18px] sm:text-[20px] font-medium tracking-tight text-[#FBFCFD] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813] rounded-sm"
+          className="font-sans text-[18px] sm:text-[20px] font-medium tracking-tight text-[#FBFCFD] transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813] rounded-sm"
         >
           {profile.name}
         </a>
 
-        {/* Right Desktop: Overview nav link + White Pill CTA */}
+        {/* Right Desktop: Overview nav link + Coordinated White Pill CTA */}
         <div className="hidden items-center gap-8 lg:flex">
           <nav aria-label="Main navigation" className="flex items-center gap-7">
             <a
               href="#overview"
-              className="text-[14px] font-medium text-[#FBFCFD]/85 transition-colors hover:text-[#FBFCFD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813] rounded-sm"
+              className="text-[14px] font-medium text-[#FBFCFD]/85 transition-colors duration-200 hover:text-[#FBFCFD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813] rounded-sm"
             >
               Overview
             </a>
@@ -117,14 +117,21 @@ export function SiteHeader() {
             href={profile.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-[42px] items-center justify-center rounded-full bg-[#FBFCFD] px-6 text-[14px] font-medium text-[#081813] transition-all duration-150 hover:bg-white hover:shadow-[0_2px_12px_rgba(251,252,253,0.2)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813]"
+            className="group relative inline-flex h-[42px] items-center justify-center overflow-hidden rounded-full bg-[#FBFCFD] px-6 text-[14px] font-medium text-[#081813] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_2px_12px_rgba(251,252,253,0.25)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813]"
           >
-            <span>LinkedIn</span>
+            {/* Subtle animated surface fill layer */}
+            <span
+              className="absolute inset-0 origin-left scale-x-0 bg-[#081813]/[0.06] transition-transform duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 pointer-events-none"
+              aria-hidden="true"
+            />
+            <span className="relative z-10 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5">
+              LinkedIn
+            </span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
 
-        {/* Mobile: Compact circular menu button matching reference */}
+        {/* Mobile: Compact circular menu button (>=44x44px touch target) */}
         <button
           ref={triggerRef}
           type="button"
@@ -135,20 +142,20 @@ export function SiteHeader() {
               setIsOpen(true);
             }
           }}
-          className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#FBFCFD] text-[#081813] transition-transform duration-150 active:scale-95 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813]"
+          className="relative flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full bg-[#FBFCFD] text-[#081813] transition-transform duration-200 active:scale-95 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#081813]"
           aria-expanded={isOpen}
           aria-controls="mobile-nav-panel"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         >
-          <span className="relative flex h-3 w-3.5 flex-col justify-between" aria-hidden="true">
+          <span className="relative flex h-3.5 w-3.5 flex-col justify-between" aria-hidden="true">
             <span
               className={`block h-[1.5px] w-full bg-[#081813] transition-transform duration-200 ease-out origin-center ${
-                isOpen ? "translate-y-[5px] rotate-45" : ""
+                isOpen ? "translate-y-[6px] rotate-45" : ""
               }`}
             />
             <span
               className={`block h-[1.5px] w-full bg-[#081813] transition-transform duration-200 ease-out origin-center ${
-                isOpen ? "-translate-y-[5.5px] -rotate-45" : ""
+                isOpen ? "-translate-y-[6px] -rotate-45" : ""
               }`}
             />
           </span>
@@ -164,12 +171,13 @@ export function SiteHeader() {
         aria-hidden="true"
       />
 
-      {/* Mobile Drawer Panel with animated enter/exit transition */}
+      {/* Mobile Drawer Panel with inert when closed & animated enter/exit transition */}
       <nav
         ref={drawerRef}
         id="mobile-nav-panel"
         aria-label="Mobile navigation"
         aria-hidden={!isOpen}
+        inert={!isOpen ? true : undefined}
         className={`absolute left-4 right-4 top-20 z-40 rounded-2xl border border-white/15 bg-[#081813]/95 p-5 text-white shadow-2xl backdrop-blur-md transition-all duration-200 ease-out lg:hidden ${
           isOpen
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
@@ -180,8 +188,9 @@ export function SiteHeader() {
           <div className="flex flex-col space-y-2">
             <a
               href="#overview"
+              tabIndex={isOpen ? 0 : -1}
               onClick={() => closeMenu(false)}
-              className="flex min-h-10 items-center px-2 text-[15px] font-medium text-[#FBFCFD] transition-colors hover:text-[#FBFCFD]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] rounded-md"
+              className="flex min-h-[44px] items-center px-3 text-[15px] font-medium text-[#FBFCFD] transition-colors hover:text-[#FBFCFD]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD] rounded-md"
             >
               Overview
             </a>
@@ -192,8 +201,9 @@ export function SiteHeader() {
               href={profile.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
+              tabIndex={isOpen ? 0 : -1}
               onClick={() => closeMenu(false)}
-              className="flex h-11 items-center justify-center rounded-full bg-[#FBFCFD] px-5 text-sm font-medium text-[#081813] transition-all duration-150 hover:bg-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD]"
+              className="flex min-h-[44px] items-center justify-center rounded-full bg-[#FBFCFD] px-5 text-sm font-medium text-[#081813] transition-all duration-150 hover:bg-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBFCFD]"
             >
               Connect on LinkedIn
             </a>
