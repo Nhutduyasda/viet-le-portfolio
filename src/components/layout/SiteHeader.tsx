@@ -34,7 +34,7 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!open) return;
-    panel.current?.querySelector<HTMLElement>("a")?.focus();
+    requestAnimationFrame(() => panel.current?.querySelector<HTMLElement>("a[href]")?.focus());
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
@@ -53,6 +53,20 @@ export function SiteHeader() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeAtDesktop = () => {
+      if (window.matchMedia("(min-width: 768px)").matches) close(true);
+    };
+    window.addEventListener("resize", closeAtDesktop);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("resize", closeAtDesktop);
+    };
+  }, [open]);
+
   return (
     <header className={`site-header fixed inset-x-0 top-0 z-30 text-white ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="site-header-inner mx-auto flex max-w-[1360px] items-center justify-between">
@@ -67,11 +81,12 @@ export function SiteHeader() {
           <span aria-hidden="true" className={`menu-strokes ${open ? "menu-strokes-open" : ""}`}><span /><span /></span>
         </button>
       </div>
-      <nav ref={panel} id="mobile-nav" aria-label="Mobile navigation" inert={!open} className={`mobile-panel absolute left-5 right-5 top-[78px] rounded-2xl bg-[#081813] p-5 shadow-2xl md:hidden ${open ? "block" : "hidden"}`}>
+      <button type="button" aria-label="Close navigation menu" tabIndex={open ? 0 : -1} inert={!open} onClick={() => close(true)} className={`mobile-backdrop md:hidden ${open ? "mobile-backdrop-open" : ""}`} />
+      <nav ref={panel} id="mobile-nav" aria-label="Mobile navigation" aria-hidden={!open} inert={!open} data-open={open} className="mobile-panel rounded-2xl bg-[#081813] p-5 shadow-2xl md:hidden">
         {links.map(link => link.href
-          ? <a key={link.label} href={link.href} onClick={() => close()} className="flex min-h-12 items-center rounded-md px-2 text-lg focus-visible:outline-2 focus-visible:outline-white">{link.label}</a>
+          ? <a key={link.label} href={link.href} onClick={() => close(true)} className="mobile-menu-link flex min-h-12 items-center rounded-md px-2 text-lg focus-visible:outline-2 focus-visible:outline-white">{link.label}</a>
           : <span key={link.label} className="flex min-h-12 items-center px-2 text-lg text-white/75" title="Coming in a later phase">{link.label}</span>)}
-        <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" onClick={() => close()} className="mt-3 flex min-h-12 items-center justify-center rounded-full bg-white text-[#081813] focus-visible:outline-2 focus-visible:outline-white">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
+        <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" onClick={() => close(true)} className="mobile-menu-cta mt-3 flex min-h-12 items-center justify-center rounded-full bg-white text-[#081813] focus-visible:outline-2 focus-visible:outline-white">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
       </nav>
     </header>
   );

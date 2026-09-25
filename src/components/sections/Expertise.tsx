@@ -41,8 +41,8 @@ export function Expertise() {
             <p className="expertise-summary" data-reveal style={{ "--reveal-index": 3 } as React.CSSProperties}>Senior Project Development Engineer (PV &amp; BESS) at GreenYellow Asia, based in Ho Chi Minh City, Vietnam.</p>
           </div>
         </div>
-        <div className="expertise-showcase">
-          <div className="showcase-stage" aria-label="Featured expertise" data-reveal style={{ "--reveal-index": 4 } as React.CSSProperties}>
+        <div className="expertise-showcase" data-reveal style={{ "--reveal-index": 4 } as React.CSSProperties}>
+          <div className="showcase-stage" aria-label="Featured expertise">
             {features.map((feature, index) => (
               <article key={feature.number} id={`showcase-panel-${index}`} className="showcase-panel" data-active={active === index} inert={active !== index} aria-hidden={active !== index}>
                 <FeatureMedia feature={feature} />
@@ -53,7 +53,7 @@ export function Expertise() {
               </article>
             ))}
           </div>
-          <div className="showcase-selectors" aria-label="Choose an expertise feature" data-reveal style={{ "--reveal-index": 5 } as React.CSSProperties}>
+          <div className="showcase-selectors" aria-label="Choose an expertise feature">
             {features.map((feature, index) => index !== active && (
               <button type="button" key={feature.number} className="showcase-selector" onClick={() => setActive(index)} aria-controls={`showcase-panel-${index}`}>
                 <span className="selector-number">{feature.number}</span>
