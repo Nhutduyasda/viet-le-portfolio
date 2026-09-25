@@ -18,14 +18,13 @@ export function SiteHeader() {
   const panel = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY >= window.innerHeight);
+    const hero = document.getElementById("overview");
+    if (!hero) return;
+    const update = () => setScrolled(hero.getBoundingClientRect().bottom <= 76);
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
+    const observer = new IntersectionObserver(update, { rootMargin: "-76px 0px 0px 0px", threshold: 0 });
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   function close(restore = false) {
@@ -60,7 +59,7 @@ export function SiteHeader() {
         <a href="#overview" className="site-wordmark rounded-sm font-bold tracking-[-0.035em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">{profile.name}</a>
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
           {links.map(link => link.href
-            ? <a key={link.label} href={link.href} className="text-[16px] font-medium text-white/90 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">{link.label}</a>
+            ? <a key={link.label} href={link.href} className="site-nav-link text-[16px] font-medium text-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">{link.label}</a>
             : <span key={link.label} className="text-[16px] font-medium text-white/90" title="Coming in a later phase">{link.label}</span>)}
           <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="ml-1 inline-flex min-h-11 min-w-[112px] justify-center items-center rounded-full bg-white px-5 text-[15px] font-medium text-[#081813] transition-colors hover:bg-white/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
         </nav>
