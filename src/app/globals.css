@@ -37,6 +37,62 @@
   --font-serif: var(--font-newsreader), Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in {
+    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-up {
+    animation: fadeSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-up-delay-1 {
+    animation: fadeSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+    animation-fill-mode: both;
+  }
+
+  .animate-slide-up-delay-2 {
+    animation: fadeSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards;
+    animation-fill-mode: both;
+  }
+
+  .animate-visual-reveal {
+    animation: fadeInScale 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+    animation-fill-mode: both;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

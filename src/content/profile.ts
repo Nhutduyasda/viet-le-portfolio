@@ -18,10 +18,11 @@ export const portfolioData: PortfolioData = {
     about: "TBD — owner-approved biography",
   },
   navigation: [
-    { label: "About", href: "#about" },
-    { label: "Expertise", href: "#expertise" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
+    { label: "Overview", href: "#overview", phase: 1 },
+    { label: "About", href: "#about", phase: 2 },
+    { label: "Expertise", href: "#expertise", phase: 2 },
+    { label: "Experience", href: "#experience", phase: 3 },
+    { label: "Projects", href: "#projects", phase: 4 },
   ],
   socialLinks: [
     {
