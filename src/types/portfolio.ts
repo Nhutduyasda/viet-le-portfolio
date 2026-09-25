@@ -23,6 +23,15 @@ export interface ExpertiseItem {
   verified: boolean;
 }
 
+export interface ExpertiseFeature {
+  number: string;
+  category: string;
+  title: string;
+  focus: string;
+  detail: string;
+  media: { type: "image"; src: string; alt: string; label: string } | { type: "video"; src: string; poster: string; alt: string; label: string };
+}
+
 export interface ExperienceItem {
   id: string;
   company: string;
@@ -76,6 +85,7 @@ export interface PortfolioData {
   navigation: NavigationItem[];
   socialLinks: SocialLink[];
   expertise: ExpertiseItem[];
+  expertiseFeatures: ExpertiseFeature[];
   experience: ExperienceItem[];
   projects: ProjectItem[];
   activities: ActivityItem[];

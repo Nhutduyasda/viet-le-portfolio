@@ -37,6 +37,23 @@ export const portfolioData: PortfolioData = {
     { id: "renewable", title: "Renewable Energy", description: "Professional focus on renewable energy and a more sustainable future.", verified: true },
     { id: "development", title: "Project Development", description: "Development-focused engineering across Solar PV and BESS.", verified: true },
   ],
+  expertiseFeatures: [
+    {
+      number: "01", category: "Renewable Energy", title: "Solar PV & BESS Development",
+      focus: "Project Development", detail: "Engineering work in the development of Solar PV and battery energy storage projects.",
+      media: { type: "image", src: "/images/solar-bess.webp", alt: "Illustrative solar panels and battery storage equipment in a green landscape", label: "Solar PV · BESS" },
+    },
+    {
+      number: "02", category: "Technical Focus", title: "Engineering",
+      focus: "Solar PV · BESS", detail: "Engineering experience supporting the development of Solar PV and battery energy storage projects.",
+      media: { type: "image", src: "/images/about-wind.webp", alt: "Illustrative turbines in a green energy landscape", label: "Renewable Energy" },
+    },
+    {
+      number: "03", category: "Delivery", title: "Project Development",
+      focus: "GreenYellow Asia", detail: "Senior Project Development Engineer (PV & BESS) at GreenYellow Asia, based in Ho Chi Minh City, Vietnam.",
+      media: { type: "image", src: "/images/solar-bess.webp", alt: "Illustrative photovoltaic panels and battery storage", label: "Project Development" },
+    },
+  ],
   experience: [],
   projects: [],
   activities: [],
