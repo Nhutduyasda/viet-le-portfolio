@@ -24,7 +24,7 @@ export function AboutIdentityMedia() {
   return (
     <div className="about-card about-card-image about-identity-media" data-reveal style={{ "--reveal-index": 1 } as React.CSSProperties}>
       <div ref={stage} className="viet-avatar-stage" onPointerMove={point} onPointerLeave={reset}>
-        <Image src="/images/viet-le-avatar.webp" alt="3D-style portrait of Viet Le wearing glasses, a dark blazer and white shirt" fill loading="lazy" sizes="(max-width: 650px) calc(100vw - 32px), (max-width: 900px) calc((100vw - 64px) / 2), 380px" quality={90} className="viet-avatar-portrait" />
+        <Image src="/images/viet-le-avatar.png" alt="3D-style portrait of Viet Le wearing glasses, a dark blazer and white shirt" fill loading="lazy" sizes="(max-width: 650px) calc(100vw - 32px), (max-width: 900px) calc((100vw - 64px) / 2), 380px" quality={90} className="viet-avatar-portrait" />
         <span className="avatar-name-pill">Viet Le</span>
       </div>
     </div>
