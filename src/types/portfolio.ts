@@ -12,6 +12,7 @@ export interface Profile {
 export interface NavigationItem {
   label: string;
   href: string;
+  phase?: number;
 }
 
 export interface ExpertiseItem {

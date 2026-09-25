@@ -2,6 +2,7 @@
 
 @layer base {
   :root {
+    /* Scandinavian Clean-Energy Light Base Foundation */
     --bg: #F7F8F3;
     --surface: #FFFFFF;
     --text: #1D2A24;
@@ -10,6 +11,15 @@
     --accent: #7FA66A;
     --accent-soft: #E8EFE3;
     --border: #DDE4DC;
+
+    /* Scoped Dark Immersive Tokens for Hero & SiteHeader */
+    --hero-bg: #081813;
+    --hero-surface: #0e241c;
+    --hero-text: #FBFCFD;
+    --hero-text-muted: #B5C2C5;
+    --hero-muted: #788182;
+    --hero-accent: #114A1A;
+    --hero-border: rgba(255, 255, 255, 0.15);
   }
 
   * {
@@ -19,7 +29,7 @@
   body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 }
 
@@ -33,6 +43,96 @@
   --color-accent-soft: var(--accent-soft);
   --color-border: var(--border);
 
-  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+  --color-hero-bg: var(--hero-bg);
+  --color-hero-surface: var(--hero-surface);
+  --color-hero-text: var(--hero-text);
+  --color-hero-text-muted: var(--hero-text-muted);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-accent: var(--hero-accent);
+  --color-hero-border: var(--hero-border);
+
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Distinct Choreographed Hero Entrance Keyframes */
+@keyframes heroEyebrowEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroHeadlineEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroCtaEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Choreographed Hero Entrance Sequence */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-hero-eyebrow {
+    animation: heroEyebrowEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
+    opacity: 0;
+  }
+
+  .animate-hero-headline {
+    animation: heroHeadlineEntrance 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+    opacity: 0;
+  }
+
+  .animate-hero-cta {
+    animation: heroCtaEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
+    opacity: 0;
+  }
+
+  .animate-menu-enter {
+    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-eyebrow,
+  .animate-hero-headline,
+  .animate-hero-cta,
+  .animate-menu-enter {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

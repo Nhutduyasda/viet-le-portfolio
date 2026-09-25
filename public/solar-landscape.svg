@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960" role="img" aria-labelledby="title desc">
+  <title id="title">Solar landscape illustration</title>
+  <desc id="desc">Illustrative solar panels amid green hills and a soft sky</desc>
+  <rect width="800" height="960" fill="#dfe8df"/>
+  <path d="M0 0h800v428H0z" fill="#d4e3e1"/>
+  <circle cx="584" cy="174" r="73" fill="#f7f3d9"/>
+  <path d="M0 391Q174 271 342 359T800 301v659H0z" fill="#8aa890"/>
+  <path d="M0 495q207-100 403-40t397-73v578H0z" fill="#5f826f"/>
+  <path d="M0 638q192-110 391-62t409-67v451H0z" fill="#3a614e"/>
+  <path d="M0 748q223-98 427-66t373-33v311H0z" fill="#254938"/>
+  <g fill="#173b32" stroke="#d0dfd5" stroke-width="3">
+    <path d="m-90 688 358-38-52 177-402 42z"/>
+    <path d="m315 650 318-34 98 161-359 39z"/>
+    <path d="m-28 851 286-30-44 139H-83z"/>
+    <path d="m390 820 370-39 100 179H422z"/>
+  </g>
+  <g stroke="#87a69a" stroke-width="2" opacity=".8">
+    <path d="m-67 729 322-34M-80 777l321-35M77 669l-54 179M180 659l-50 178"/>
+    <path d="m339 689 315-34m-287 80 318-34M390 643l92 164m35-178 92 164"/>
+    <path d="m-15 888 259-28M93 835 59 960m118-133-34 133"/>
+    <path d="m416 860 370-40m-343 90 369-40M510 807l85 153m44-165 89 165"/>
+  </g>
+  <path d="M0 0v960M800 0v960" stroke="#f7f8f3" stroke-width="14" opacity=".18"/>
+</svg>
