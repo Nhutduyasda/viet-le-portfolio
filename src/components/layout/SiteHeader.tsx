@@ -36,7 +36,6 @@ export function SiteHeader() {
   }, [isOpen]);
 
   const activeNavItems = navigation.filter((item) => !item.phase || item.phase === 1);
-  const plannedNavItems = navigation.filter((item) => item.phase && item.phase > 1);
 
   return (
     <header
@@ -132,29 +131,6 @@ export function SiteHeader() {
                 </a>
               ))}
             </div>
-
-            {/* Planned sections metadata for reviewers and users */}
-            {plannedNavItems.length > 0 && (
-              <div className="border-t border-[var(--border)] pt-3">
-                <p className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-                  Upcoming sections
-                </p>
-                <div className="grid grid-cols-2 gap-2 px-3 py-1">
-                  {plannedNavItems.map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex items-center justify-between text-xs text-[var(--muted)]"
-                      aria-disabled="true"
-                    >
-                      <span>{item.label}</span>
-                      <span className="rounded bg-[var(--bg)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--muted)]">
-                        Phase {item.phase}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
             <div className="border-t border-[var(--border)] pt-3">
               <a
