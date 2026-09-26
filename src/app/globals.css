@@ -155,8 +155,14 @@ html { scroll-behavior: smooth; }
 .showcase-panel[data-active="true"] { opacity: 1; transform: none; pointer-events: auto; z-index: 2; }
 .showcase-media { position: relative; margin: 18px 0 18px 18px; overflow: hidden; border-radius: 14px; background: #acc2a9; }
 .showcase-photo, .showcase-media video { object-fit: cover; width: 100%; height: 100%; filter: saturate(.78) contrast(1.05) sepia(.07); }
-.showcase-panel:first-child .showcase-photo { object-position: 28% center; }
-.showcase-panel:nth-child(3) .showcase-photo { object-position: 72% center; }
+.showcase-panel:nth-child(1) .showcase-photo { object-position: 27% center; }
+.showcase-panel:nth-child(2) .showcase-photo { object-position: 28% center; }
+.showcase-panel:nth-child(3) .showcase-photo { object-position: 11% center; }
+@media (min-width: 651px) and (max-width: 900px) {
+  .showcase-panel:nth-child(1) .showcase-photo { object-position: 18% center; }
+  .showcase-panel:nth-child(2) .showcase-photo { object-position: 18% center; }
+  .showcase-panel:nth-child(3) .showcase-photo { object-position: 27% center; }
+}
 .showcase-media-number, .showcase-media-label { position: absolute; left: 16px; color: #fff; text-shadow: 0 1px 7px #000a; font-size: 17px; }
 .showcase-media-number { top: 15px; }
 .showcase-media-label { bottom: 16px; font-size: 13px; }

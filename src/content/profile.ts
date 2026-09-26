@@ -50,17 +50,17 @@ export const portfolioData: PortfolioData = {
     {
       number: "01", category: "Project Development", title: "Solar PV & BESS Development",
       focus: "Renewable Energy", detail: "My work includes project development across Solar PV and battery energy storage.",
-      media: { type: "image", src: "/images/solar-bess.webp", alt: "Illustrative solar panels and battery storage equipment in a green landscape", label: "Solar PV · BESS" },
+      media: { type: "image", src: "/images/expertise-solar-bess.webp", alt: "Two hard-hatted professionals surveying solar panels and battery equipment at a renewable energy site", label: "Solar PV · BESS" },
     },
     {
       number: "02", category: "Engineering", title: "Technical Development",
       focus: "Solar PV · BESS", detail: "Engineering work supporting the development of Solar PV and battery energy storage projects.",
-      media: { type: "image", src: "/images/about-wind.webp", alt: "Illustrative turbines in a green energy landscape", label: "Renewable Energy" },
+      media: { type: "image", src: "/images/expertise-technical.webp", alt: "Two engineers reviewing a tablet beside solar panels and electrical equipment", label: "Renewable Energy" },
     },
     {
       number: "03", category: "Project Development", title: "Project Development",
       focus: "GreenYellow Asia", detail: "My current role focuses on Solar PV and BESS project development at GreenYellow Asia.",
-      media: { type: "image", src: "/images/solar-bess.webp", alt: "Illustrative photovoltaic panels and battery storage", label: "Project Development" },
+      media: { type: "image", src: "/images/expertise-coordination.webp", alt: "Three hard-hatted professionals reviewing plans beside solar panels and electrical equipment", label: "Project Development" },
     },
   ],
   experience: [
