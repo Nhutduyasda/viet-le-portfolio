@@ -30,7 +30,7 @@ export function Projects() {
                 <div><strong>{project.impactMetric}</strong><span>{project.impactLabel}</span></div>
               </div>
               <div className="project-connection" data-reveal style={{ "--reveal-index": 3 } as React.CSSProperties}>
-                <p className="project-small-label">Viet&apos;s documented connection</p>
+                <p className="project-small-label">Site visit</p>
                 <p className="project-connection-text">{project.connection}</p>
                 <p className="project-source">{project.employerContext} · {project.impactAttribution} <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer">{project.sourceLabel}<span className="sr-only"> (opens in a new tab)</span></a></p>
               </div>

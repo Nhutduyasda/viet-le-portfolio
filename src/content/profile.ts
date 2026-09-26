@@ -98,7 +98,7 @@ export const portfolioData: PortfolioData = {
       id: "ecoligo-garment-solar",
       number: "01",
       title: "1.06 MWp Solar Project",
-      projectType: "Commercial & Industrial Solar PV",
+      projectType: "Solar PV Project",
       location: "Vietnam",
       employerContext: "ecoligo",
       clientDisplay: "Local garment producer",
