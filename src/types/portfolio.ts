@@ -41,14 +41,21 @@ export interface ExpertiseFeature {
   media: { type: "image"; src: string; alt: string; label: string } | { type: "video"; src: string; poster: string; alt: string; label: string };
 }
 
+export interface ExperienceRole {
+  title?: string;
+  period: string;
+  region?: string;
+}
+
 export interface ExperienceItem {
   id: string;
+  number: string;
   company: string;
-  title: string;
   period: string;
+  current?: boolean;
   location?: string;
-  description?: string;
-  bullets?: string[];
+  roles: ExperienceRole[];
+  summary?: string;
   verified: boolean;
 }
 

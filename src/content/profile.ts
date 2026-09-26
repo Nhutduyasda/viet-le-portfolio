@@ -63,7 +63,36 @@ export const portfolioData: PortfolioData = {
       media: { type: "image", src: "/images/solar-bess.webp", alt: "Illustrative photovoltaic panels and battery storage", label: "Project Development" },
     },
   ],
-  experience: [],
+  experience: [
+    {
+      id: "greenyellow", number: "01", company: "GreenYellow Asia",
+      period: "Jun 2026 — Present", current: true,
+      location: "Ho Chi Minh City, Vietnam",
+      roles: [{ title: "Senior Project Development Engineer (PV & BESS)", period: "Jun 2026 — Present" }],
+      summary: "Current role focused on project development across Solar PV and battery energy storage.",
+      verified: true,
+    },
+    {
+      id: "ecoligo", number: "02", company: "ecoligo",
+      period: "Jul 2023 — Jun 2026",
+      roles: [
+        { title: "Project Engineer", period: "Jul 2023 — Sep 2025", region: "Vietnam & Philippines" },
+        { title: "Jr. Technical Project Manager", period: "Sep 2025 — Jun 2026", region: "Vietnam & Philippines" },
+      ],
+      verified: true,
+    },
+    {
+      id: "solarbk", number: "03", company: "SolarBK",
+      period: "Mar 2022 — Jun 2023", location: "Ho Chi Minh City, Vietnam",
+      roles: [], verified: true,
+    },
+    {
+      id: "asia-networks", number: "04", company: "Asia Networks Energy JSC",
+      period: "Oct 2020 — Mar 2022",
+      roles: [{ title: "Project Engineer", period: "Oct 2020 — Mar 2022" }],
+      verified: true,
+    },
+  ],
   projects: [],
   activities: [],
   education: [],
