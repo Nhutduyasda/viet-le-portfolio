@@ -21,9 +21,9 @@ export function SiteHeader() {
   useEffect(() => {
     const hero = document.getElementById("overview");
     if (!hero) return;
-    const update = () => setScrolled(hero.getBoundingClientRect().bottom <= 76);
+    const update = () => setScrolled(hero.getBoundingClientRect().bottom <= 68);
     update();
-    const observer = new IntersectionObserver(update, { rootMargin: "-76px 0px 0px 0px", threshold: 0 });
+    const observer = new IntersectionObserver(update, { rootMargin: "-68px 0px 0px 0px", threshold: 0 });
     observer.observe(hero);
     return () => observer.disconnect();
   }, []);
@@ -76,9 +76,9 @@ export function SiteHeader() {
           {links.map(link => link.href
             ? <a key={link.label} href={link.href} className="site-nav-link text-[16px] font-medium text-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label={link.label}><span className="nav-label-window" aria-hidden="true"><span className="nav-label-track"><span className="nav-label-copy">{link.label}</span><span className="nav-label-copy">{link.label}</span></span></span></a>
             : <span key={link.label} className="text-[16px] font-medium text-white/90" title="Coming in a later phase">{link.label}</span>)}
-          <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" className="header-linkedin ml-1 inline-flex min-h-11 min-w-[112px] justify-center items-center rounded-full bg-white px-5 text-[15px] font-medium text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"><span className="nav-label-window" aria-hidden="true"><span className="nav-label-track"><span className="nav-label-copy">LinkedIn</span><span className="nav-label-copy">LinkedIn</span></span></span></a>
+          <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" className="header-linkedin ml-1 inline-flex min-h-10 min-w-[112px] justify-center items-center rounded-full bg-white px-5 text-[15px] font-medium text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"><span className="nav-label-window" aria-hidden="true"><span className="nav-label-track"><span className="nav-label-copy">LinkedIn</span><span className="nav-label-copy">LinkedIn</span></span></span></a>
         </nav>
-        <button ref={trigger} type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => open ? close() : setOpen(true)} className="mobile-trigger flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:hidden">
+        <button ref={trigger} type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => open ? close() : setOpen(true)} className="mobile-trigger flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:hidden">
           <span aria-hidden="true" className={`menu-strokes ${open ? "menu-strokes-open" : ""}`}><span /><span /></span>
         </button>
       </div>

@@ -5,7 +5,7 @@ export function Experience() {
     <section id="experience" aria-labelledby="experience-title" className="experience-section">
       <div className="phase2-container">
         <div className="experience-intro">
-          <p className="about-section-label" data-reveal>{"//Experience"}</p>
+          <p className="about-section-label" data-reveal>Experience</p>
           <div>
             <h2 id="experience-title" data-reveal style={{ "--reveal-index": 1 } as React.CSSProperties}>
               Experience shaped across <span>renewable-energy engineering &amp; project development</span>

@@ -5,7 +5,7 @@ export function Background() {
     <section id="background" aria-labelledby="background-title" className="background-section">
       <div className="phase2-container">
         <div className="background-intro">
-          <p className="about-section-label" data-reveal>{"//Background"}</p>
+          <p className="about-section-label" data-reveal>Background</p>
           <h2 id="background-title" data-reveal style={{ "--reveal-index": 1 } as React.CSSProperties}>
             Professional development <span>&amp; education</span>
           </h2>

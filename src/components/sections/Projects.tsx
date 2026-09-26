@@ -6,7 +6,7 @@ export function Projects() {
     <section id="projects" aria-labelledby="projects-title" className="projects-section">
       <div className="phase2-container">
         <div className="projects-intro">
-          <p className="about-section-label" data-reveal>{projects.length === 1 ? "//Selected Project" : "//Selected Projects"}</p>
+          <p className="about-section-label" data-reveal>{projects.length === 1 ? "Selected Project" : "Selected Projects"}</p>
           <div>
             <h2 id="projects-title" data-reveal style={{ "--reveal-index": 1 } as React.CSSProperties}>
               A closer look at <span>real project experience</span>
