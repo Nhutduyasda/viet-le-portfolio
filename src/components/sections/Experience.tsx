@@ -16,15 +16,17 @@ export function Experience() {
           </div>
         </div>
         <div className="experience-list">
-          {portfolioData.experience.map((item, index) => (
-            <article className="experience-row" key={item.id} aria-labelledby={`experience-${item.id}`} data-reveal style={{ "--reveal-index": index + 1 } as React.CSSProperties}>
+          {portfolioData.experience.map((item, index) => {
+            const hasDetails = Boolean(item.current || item.roles.length > 0 || item.summary);
+            return (
+            <article className="experience-row" key={item.id} aria-labelledby={`experience-${item.id}`} data-reveal data-has-details={hasDetails} style={{ "--reveal-index": index + 1 } as React.CSSProperties}>
               <span className="experience-number" aria-hidden="true">{item.number}</span>
               <div className="experience-company">
                 <h3 id={`experience-${item.id}`}>{item.company}</h3>
                 <p className="experience-period">{item.period}</p>
                 {item.location && <p className="experience-location">{item.location}</p>}
               </div>
-              <div className="experience-details">
+              {hasDetails && <div className="experience-details">
                 {item.current && <span className="experience-current"><span aria-hidden="true" />Current</span>}
                 {item.roles.length > 0 && (
                   <div className={item.roles.length > 1 ? "experience-roles experience-roles-progress" : "experience-roles"}>
@@ -37,9 +39,10 @@ export function Experience() {
                   </div>
                 )}
                 {item.summary && <p className="experience-summary">{item.summary}</p>}
-              </div>
+              </div>}
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

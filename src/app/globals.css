@@ -76,6 +76,10 @@ html { scroll-behavior: smooth; }
 .site-header-scrolled nav[aria-label="Main navigation"] > span { color: #182b20; }
 .site-header-scrolled nav[aria-label="Main navigation"] > a:last-child { background: #101010; color: #fff; }
 .site-header-scrolled .mobile-trigger { background: #101010; color: #fff; }
+.site-header-scrolled .site-wordmark:focus-visible,
+.site-header-scrolled .site-nav-link:focus-visible,
+.site-header-scrolled .header-linkedin:focus-visible,
+.site-header-scrolled .mobile-trigger:focus-visible { outline-color: #315b39; }
 
 
 
@@ -250,6 +254,7 @@ html { scroll-behavior: smooth; }
 .experience-list { margin: 0 20px; border-top: 1px solid #cfd7ce; }
 .experience-row { display: grid; grid-template-columns: 13% 32% minmax(0, 1fr); gap: 20px; padding: 34px 0 38px; border-bottom: 1px solid #cfd7ce; transition: border-color 350ms ease; }
 .experience-row:hover { border-color: #718b70; }
+.experience-row[data-has-details="false"] { grid-template-columns: 13% minmax(0, 1fr); }
 .experience-number { padding-top: 8px; color: #749668; font-size: 17px; font-variant-numeric: tabular-nums; }
 .experience-company h3 { max-width: 360px; font-size: clamp(29px, 2.55vw, 37px); font-weight: 500; letter-spacing: -.04em; line-height: 1.16; overflow-wrap: break-word; }
 .experience-period, .experience-location { color: #68736c; font-size: 14px; line-height: 1.5; }
@@ -268,6 +273,7 @@ html { scroll-behavior: smooth; }
 @media (max-width: 900px) {
   .experience-intro { grid-template-columns: 135px 1fr; gap: 22px; }
   .experience-row { grid-template-columns: 10% 35% minmax(0, 1fr); gap: 14px; }
+  .experience-row[data-has-details="false"] { grid-template-columns: 10% minmax(0, 1fr); }
 }
 @media (max-width: 650px) {
   .experience-section { padding: 72px 0 108px; }
