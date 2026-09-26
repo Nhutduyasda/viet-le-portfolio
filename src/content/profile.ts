@@ -131,6 +131,16 @@ export const portfolioData: PortfolioData = {
       sourceUrl: "https://www.linkedin.com/in/lenguyenquocviet118/",
       verified: true,
     },
+    {
+      id: "toeic-790", number: "03",
+      title: "TOEIC — Total Score 790",
+      organization: "ETS (Educational Testing Service)",
+      date: "Oct 2020",
+      status: "Expired Oct 2022",
+      sourceLabel: "Viet Le's public LinkedIn profile",
+      sourceUrl: "https://www.linkedin.com/in/lenguyenquocviet118/",
+      verified: true,
+    },
   ],
   education: [
     {

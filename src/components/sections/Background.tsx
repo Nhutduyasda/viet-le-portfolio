@@ -16,7 +16,7 @@ export function Background() {
             {portfolioData.professionalDevelopment.map((entry, index) => (
               <article className="background-entry" key={entry.id} data-reveal style={{ "--reveal-index": index + 1 } as React.CSSProperties}>
                 <span className="background-number" aria-hidden="true">{entry.number}</span>
-                <div><h4>{entry.title}</h4><p>{entry.organization}</p></div>
+                <div><h4>{entry.title}</h4><p>{entry.organization}</p>{entry.status && <p className="background-status">{entry.status}</p>}</div>
                 <span className="background-date">{entry.date}</span>
               </article>
             ))}

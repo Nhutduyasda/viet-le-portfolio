@@ -83,6 +83,7 @@ export interface ProfessionalDevelopmentItem {
   title: string;
   organization: string;
   date: string;
+  status?: string;
   sourceLabel: string;
   sourceUrl: string;
   verified: boolean;

@@ -359,6 +359,7 @@ html { scroll-behavior: smooth; }
 .background-number { color: #749668; font-size: 15px; font-variant-numeric: tabular-nums; }
 .background-entry h4 { font-size: clamp(20px, 1.8vw, 25px); line-height: 1.3; font-weight: 500; letter-spacing: -.025em; }
 .background-entry p { margin-top: 7px; color: #68736c; font-size: 14px; line-height: 1.5; }
+.background-status { color: #805f4b !important; }
 .background-date { color: #68736c; font-size: 14px; white-space: nowrap; text-align: right; }
 .background-education { margin-top: 13px; }
 .background-education-entry { grid-template-columns: minmax(0, 1fr) 100px; padding-bottom: 0; }
