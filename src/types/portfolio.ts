@@ -61,15 +61,19 @@ export interface ExperienceItem {
 
 export interface ProjectItem {
   id: string;
+  number: string;
   title: string;
-  location?: string;
-  capacity?: string;
-  client?: string;
-  role?: string;
-  challenge?: string;
-  contribution?: string;
-  outcome?: string;
-  image?: string;
+  projectType: string;
+  location: string;
+  employerContext: string;
+  clientDisplay: string;
+  capacity: string;
+  impactMetric: string;
+  impactLabel: string;
+  impactAttribution: string;
+  connection: string;
+  sourceLabel: string;
+  sourceUrl: string;
   verified: boolean;
 }
 

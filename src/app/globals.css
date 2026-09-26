@@ -122,7 +122,7 @@ html { scroll-behavior: smooth; }
 .about-focus-title { margin-top: auto; font-size: clamp(27px, 2.6vw, 37px); font-weight: 500; line-height: 1.08; letter-spacing: -.05em; }
 .about-focus-footer { display: flex; justify-content: space-between; gap: 12px; align-items: end; margin-top: auto; border-top: 1px solid #dedfda; padding-top: 15px; color: #67736b; font-size: 12px; }
 .about-focus-footer span:last-child { text-align: right; }
-#about, #expertise, #experience { scroll-margin-top: 96px; }
+#about, #expertise, #experience, #projects { scroll-margin-top: 96px; }
 
 /* About identity media */
 .about-identity-media .about-photo { filter: saturate(.76) contrast(1.06) sepia(.08); transition: transform 900ms cubic-bezier(.16,1,.3,1), filter 900ms ease; }
@@ -292,4 +292,56 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   .experience-row { transition: none; }
   .experience-section [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Selected project — editorial evidence without decorative photography */
+.projects-section { background: #fff; color: #182b20; padding: 112px 0 152px; }
+.projects-intro { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; padding: 0 20px 66px; }
+.projects-intro h2 { max-width: 760px; font-size: clamp(35px, 3.2vw, 46px); line-height: 1.25; font-weight: 600; letter-spacing: -.035em; }
+.projects-intro h2 span { color: #929b93; }
+.projects-deck { max-width: 540px; margin-top: 23px; color: #68736c; font-size: 16px; line-height: 1.6; }
+.project-feature { display: grid; grid-template-columns: minmax(0, 42%) minmax(0, 1fr); gap: 7%; margin: 0 20px; border-top: 1px solid #cfd7ce; border-bottom: 1px solid #cfd7ce; padding: 40px 0 52px; }
+.project-number { color: #749668; font-size: 14px; font-variant-numeric: tabular-nums; }
+.project-overview h3 { max-width: 420px; margin-top: 30px; font-size: clamp(42px, 4.2vw, 61px); line-height: 1.1; letter-spacing: -.055em; font-weight: 500; }
+.project-context { margin-top: 30px; font-size: 18px; line-height: 1.5; }
+.project-context span { color: #91a392; }
+.project-type { margin-top: 7px; color: #68736c; font-size: 15px; line-height: 1.5; }
+.project-evidence { min-width: 0; }
+.project-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.project-metrics > div { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.project-metrics strong { font-size: clamp(30px, 3.1vw, 44px); font-weight: 500; letter-spacing: -.045em; line-height: 1.15; overflow-wrap: anywhere; }
+.project-metrics span { max-width: 205px; color: #68736c; font-size: 14px; line-height: 1.5; }
+.project-connection { margin-top: 53px; border-top: 1px solid #dfe3df; padding-top: 27px; }
+.project-small-label { color: #64805b; font-size: 14px; }
+.project-connection-text { max-width: 540px; margin-top: 12px; font-size: clamp(22px, 2.05vw, 29px); line-height: 1.35; letter-spacing: -.025em; }
+.project-source { max-width: 540px; margin-top: 25px; color: #68736c; font-size: 13px; line-height: 1.6; }
+.project-source a { color: #315b39; text-decoration: underline; text-underline-offset: 3px; }
+.project-source a:focus-visible { outline: 2px solid #315b39; outline-offset: 3px; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-header-inner { padding: 0 20px; }
+}
+@media (max-width: 900px) {
+  .projects-intro { grid-template-columns: 135px minmax(0, 1fr); gap: 22px; }
+  .project-feature { gap: 5%; }
+  .project-metrics { grid-template-columns: 1fr; gap: 22px; }
+}
+@media (max-width: 650px) {
+  .projects-section { padding: 88px 0 112px; }
+  .projects-intro { display: block; padding: 0 0 44px; }
+  .projects-intro h2 { margin-top: 24px; font-size: clamp(32px, 8vw, 40px); }
+  .projects-deck { margin-top: 20px; }
+  .project-feature { display: block; margin: 0; padding: 30px 0 37px; }
+  .project-overview h3 { margin-top: 24px; font-size: clamp(37px, 10.5vw, 47px); }
+  .project-context { margin-top: 22px; font-size: 16px; }
+  .project-metrics { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 34px; }
+  .project-metrics strong { font-size: clamp(26px, 7.8vw, 34px); }
+  .project-metrics span { font-size: 13px; }
+  .project-connection { margin-top: 33px; padding-top: 24px; }
+  .project-connection-text { font-size: 23px; }
+}
+@media (max-width: 360px) {
+  .project-metrics { grid-template-columns: 1fr; gap: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-section [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 }

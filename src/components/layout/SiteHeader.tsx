@@ -8,6 +8,7 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Expertise", href: "#expertise" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
 ];
 
 export function SiteHeader() {
@@ -58,7 +59,7 @@ export function SiteHeader() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const closeAtDesktop = () => {
-      if (window.matchMedia("(min-width: 768px)").matches) close(true);
+      if (window.matchMedia("(min-width: 1024px)").matches) close(true);
     };
     window.addEventListener("resize", closeAtDesktop);
     return () => {
@@ -71,18 +72,18 @@ export function SiteHeader() {
     <header className={`site-header fixed inset-x-0 top-0 z-30 text-white ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="site-header-inner mx-auto flex max-w-[1360px] items-center justify-between">
         <a href="#overview" className="site-wordmark rounded-sm font-bold tracking-[-0.035em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">{profile.name}</a>
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
           {links.map(link => link.href
             ? <a key={link.label} href={link.href} className="site-nav-link text-[16px] font-medium text-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label={link.label}><span className="nav-label-window" aria-hidden="true"><span className="nav-label-track"><span className="nav-label-copy">{link.label}</span><span className="nav-label-copy">{link.label}</span></span></span></a>
             : <span key={link.label} className="text-[16px] font-medium text-white/90" title="Coming in a later phase">{link.label}</span>)}
           <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" className="header-linkedin ml-1 inline-flex min-h-11 min-w-[112px] justify-center items-center rounded-full bg-white px-5 text-[15px] font-medium text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"><span className="nav-label-window" aria-hidden="true"><span className="nav-label-track"><span className="nav-label-copy">LinkedIn</span><span className="nav-label-copy">LinkedIn</span></span></span></a>
         </nav>
-        <button ref={trigger} type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => open ? close() : setOpen(true)} className="mobile-trigger flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:hidden">
+        <button ref={trigger} type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => open ? close() : setOpen(true)} className="mobile-trigger flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#081813] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:hidden">
           <span aria-hidden="true" className={`menu-strokes ${open ? "menu-strokes-open" : ""}`}><span /><span /></span>
         </button>
       </div>
-      <button type="button" aria-label="Close navigation menu" tabIndex={open ? 0 : -1} inert={!open} onClick={() => close(true)} className={`mobile-backdrop md:hidden ${open ? "mobile-backdrop-open" : ""}`} />
-      <nav ref={panel} id="mobile-nav" aria-label="Mobile navigation" aria-hidden={!open} inert={!open} data-open={open} className="mobile-panel rounded-2xl bg-[#081813] p-5 shadow-2xl md:hidden">
+      <button type="button" aria-label="Close navigation menu" tabIndex={open ? 0 : -1} inert={!open} onClick={() => close(true)} className={`mobile-backdrop lg:hidden ${open ? "mobile-backdrop-open" : ""}`} />
+      <nav ref={panel} id="mobile-nav" aria-label="Mobile navigation" aria-hidden={!open} inert={!open} data-open={open} className="mobile-panel rounded-2xl bg-[#081813] p-5 shadow-2xl lg:hidden">
         {links.map(link => link.href
           ? <a key={link.label} href={link.href} onClick={() => close(true)} className="mobile-menu-link flex min-h-12 items-center rounded-md px-2 text-lg focus-visible:outline-2 focus-visible:outline-white">{link.label}</a>
           : <span key={link.label} className="flex min-h-12 items-center px-2 text-lg text-white/75" title="Coming in a later phase">{link.label}</span>)}
