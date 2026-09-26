@@ -58,7 +58,7 @@ export function Expertise() {
               <button type="button" key={feature.number} className="showcase-selector" onClick={() => setActive(index)} aria-controls={`showcase-panel-${index}`}>
                 <span className="selector-number">{feature.number}</span>
                 <span className="selector-label"><small>{feature.category}</small><span>{feature.title}</span></span>
-                <span className="selector-arrow" aria-hidden="true">↗</span>
+                <span className="selector-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" focusable="false"><path d="M6 18 18 6M8 6h10v10" /></svg></span>
               </button>
             ))}
           </div>
