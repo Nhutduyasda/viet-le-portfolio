@@ -6,6 +6,15 @@ export interface Profile {
   linkedinUrl: string;
   email: string;
   heroStatement: string;
+  heroEyebrow: string;
+  heroDescription: string;
+  aboutHeadingLead: string;
+  aboutHeadingAccent: string;
+  aboutCardStatement: string;
+  employer: string;
+  expertiseHeadingLead: string;
+  expertiseHeadingAccent: string;
+  expertiseSummary: string;
   about: string;
 }
 

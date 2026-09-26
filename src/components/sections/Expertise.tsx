@@ -32,13 +32,13 @@ export function Expertise() {
         <div className="expertise-intro">
           <div className="expertise-identity" data-reveal style={{ "--reveal-index": 0 } as React.CSSProperties}>
             <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M4 23h24M8 20a8 8 0 0 1 16 0M16 2v4M5 8l3 3M27 8l-3 3M3 17h4M25 17h4" /></svg>
-            <p>Senior Project Development Engineer<br />PV &amp; BESS</p>
-            <small>GreenYellow Asia<br />Ho Chi Minh City, Vietnam</small>
+            <p>{portfolioData.profile.headline}<br />PV &amp; BESS</p>
+            <small>{portfolioData.profile.employer}<br />{portfolioData.profile.location}</small>
           </div>
           <div>
             <span className="phase2-pill expertise-pill" data-reveal style={{ "--reveal-index": 1 } as React.CSSProperties}><span className="phase2-dot" />Expertise</span>
-            <h2 id="expertise-title" className="expertise-heading" data-reveal style={{ "--reveal-index": 2 } as React.CSSProperties}>Renewable energy development, <span>engineering &amp; project delivery</span></h2>
-            <p className="expertise-summary" data-reveal style={{ "--reveal-index": 3 } as React.CSSProperties}>Senior Project Development Engineer (PV &amp; BESS) at GreenYellow Asia, based in Ho Chi Minh City, Vietnam.</p>
+            <h2 id="expertise-title" className="expertise-heading" data-reveal style={{ "--reveal-index": 2 } as React.CSSProperties}>{portfolioData.profile.expertiseHeadingLead} <span>{portfolioData.profile.expertiseHeadingAccent}</span></h2>
+            <p className="expertise-summary" data-reveal style={{ "--reveal-index": 3 } as React.CSSProperties}>{portfolioData.profile.expertiseSummary}</p>
           </div>
         </div>
         <div className="expertise-showcase" data-reveal style={{ "--reveal-index": 4 } as React.CSSProperties}>
