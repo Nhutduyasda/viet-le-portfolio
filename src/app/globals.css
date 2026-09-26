@@ -113,7 +113,8 @@ html { scroll-behavior: smooth; }
 .about-sun-icon { width: 27px; height: 27px; fill: none; stroke: #e7f1e3; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .about-card-statement { max-width: 310px; margin: auto 0 12px; font-size: clamp(23px, 2vw, 29px); line-height: 1.33; letter-spacing: -.03em; }
 .about-card-foot { display: flex; align-items: center; gap: 12px; border-top: 1px solid #ffffff20; padding-top: 17px; color: #d8e4d8; font-size: 14px; }
-.about-card-indicator { display: block; align-self: flex-start; flex: none; width: 40px; height: 21px; margin-bottom: 12px; border-radius: 999px; background: #8ac64c; }
+.about-card-indicator { position: relative; display: block; align-self: flex-start; flex: none; width: 42px; height: 22px; margin-bottom: 12px; border-radius: 999px; background: #8ac64c; }
+.about-card-indicator::after { content: ""; position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
 .about-card-image { background: #517263; }
 .about-photo { object-fit: cover; object-position: 60% center; }
 .about-image-tag { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 999px; background: #e9f1e8d9; padding: 12px 17px; color: #1c3425; font-size: 14px; white-space: nowrap; backdrop-filter: blur(8px); }
@@ -375,7 +376,6 @@ html { scroll-behavior: smooth; }
 .contact-link:focus-visible, .contact-email:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 .contact-link svg { width: 20px; height: 20px; flex: none; }
 .contact-email { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-.contact-email-placeholder { color: #b7cdb8; font-size: 15px; cursor: default; }
 .contact-signature { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 106px; border-top: 1px solid #ffffff3a; padding-top: 25px; color: #d2dfd4; font-size: 14px; }
 .contact-signature span:first-child { color: #fff; font-weight: 600; }
 .site-footer { background: #0b2117; color: #e4ece4; padding: 40px 0 max(28px, env(safe-area-inset-bottom)); }
