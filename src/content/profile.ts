@@ -112,6 +112,30 @@ export const portfolioData: PortfolioData = {
       verified: true,
     },
   ],
-  activities: [],
-  education: [],
+  professionalDevelopment: [
+    {
+      id: "dppa-eav", number: "01",
+      title: "DPPA & Vietnam Electricity Market Training",
+      organization: "Electricity Authority of Vietnam (EAV)",
+      date: "2026",
+      sourceLabel: "GreenYellow colleague's public post",
+      sourceUrl: "https://www.linkedin.com/posts/giang-nguy%E1%BB%85n-28949889_dppa-vietnamenergy-electricitymarket-activity-7499067974524448768-fSwE",
+      verified: true,
+    },
+    {
+      id: "pmp-training", number: "02",
+      title: "PMP® Certification Training Course",
+      organization: "PMA Vietnam — Professional Management Academy",
+      date: "Dec 2025",
+      sourceLabel: "Viet Le's public LinkedIn profile",
+      sourceUrl: "https://www.linkedin.com/in/lenguyenquocviet118/",
+      verified: true,
+    },
+  ],
+  education: [
+    {
+      id: "can-tho", institution: "Can Tho University", year: "2016 — 2020",
+      sourceUrl: "https://www.linkedin.com/in/lenguyenquocviet118/", verified: true,
+    },
+  ],
 };

@@ -77,12 +77,14 @@ export interface ProjectItem {
   verified: boolean;
 }
 
-export interface ActivityItem {
+export interface ProfessionalDevelopmentItem {
   id: string;
+  number: string;
   title: string;
-  type?: string;
-  year?: string;
-  description?: string;
+  organization: string;
+  date: string;
+  sourceLabel: string;
+  sourceUrl: string;
   verified: boolean;
 }
 
@@ -91,6 +93,7 @@ export interface EducationItem {
   institution: string;
   degree?: string;
   year?: string;
+  sourceUrl?: string;
   verified: boolean;
 }
 
@@ -108,6 +111,6 @@ export interface PortfolioData {
   expertiseFeatures: ExpertiseFeature[];
   experience: ExperienceItem[];
   projects: ProjectItem[];
-  activities: ActivityItem[];
+  professionalDevelopment: ProfessionalDevelopmentItem[];
   education: EducationItem[];
 }
